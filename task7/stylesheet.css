@@ -1,0 +1,49 @@
+a{
+    text-decoration: none;
+    color: inherit;
+}
+.navbar{
+    background-color: #b2b7d8;
+    display: flex;
+    padding: 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #000000;
+}
+.navbarItems{
+    display: flex;
+}
+.navbarBrand{
+    cursor: pointer;
+}
+.navbarLink{
+    padding-right: 30px;
+}
+.items-right{
+    margin-left: auto;
+}
+.navbarToggle{
+    display: none;
+}
+@media only screen and (max-width: 768px) {
+    .navbarItems,.navbar {
+        flex-direction: column;
+    }
+    .items-right {
+        margin-left: 0;
+        text-align: center;
+        display: none;
+    }
+    .navbarToggleShow{
+        display: flex;
+    }
+    .navbarToggle{
+        align-self: flex-end;
+        display: initial;
+        position: absolute;
+        cursor: pointer;
+    }
+    .navbarLink{
+        padding: 15px;
+    }
+    
+}
