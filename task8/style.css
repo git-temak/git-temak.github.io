@@ -88,8 +88,13 @@ input[type="submit"] {
 	color: white;
 }
 
+.row > label a {
+	color: #3599DB;
+	text-decoration: none;
+}
+
 input[type="submit"]:hover {
-	cursor: pointer;
+	/*cursor: pointer;*/
 }
 
 /*tablet and mobile styles*/
