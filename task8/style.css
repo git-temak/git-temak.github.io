@@ -17,18 +17,32 @@ html {
 	box-shadow: 0 3px 7px rgba(19,50,82,.3);
 }
 
+.login-text {
+	margin-top: 15px;
+	text-align: center;
+	color: white;
+}
+
+.login-text a {
+	color: white;
+}
+
 .row {
 	display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .col {
 	width: 100%;
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 1024px) {
 	.col {
 		width: 48%;
+	}
+
+	.col-2 {
+		margin-left: 20px;
 	}
 }
 
@@ -69,6 +83,7 @@ input[type="submit"] {
 	padding: 5% 10%;
 	text-align: center;
 	height: auto;
+	font-size: 110%;
 	font-weight: bold;
 	color: white;
 }
@@ -78,11 +93,15 @@ input[type="submit"]:hover {
 }
 
 /*tablet and mobile styles*/
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 1024px) and (max-width: 1439px) {
 	.container {
-		background-color: white;
-		margin: auto;
-		width: 90vw;
+		width: 60vw;
+	}
+}
+
+@media only screen and (max-width: 1023px) {
+	.container {
+		width: 85vw;
 	}
 
 	.row {
