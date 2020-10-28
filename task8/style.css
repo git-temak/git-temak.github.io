@@ -3,18 +3,18 @@
 	margin: 0;
 }
 
-body, html {
-	background-color: lightskyblue;
-	padding: 10% 0;
+html {
+	background-color: #3599DB;
+	padding: 5% 0;
 	height: 100%;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Nunito', sans-serif;
 }
 
 .container {
 	background-color: white;
 	margin: auto;
-	width: 100%;
-	max-width: max-content;
+	width: 31vw;
+	box-shadow: 0 3px 7px rgba(19,50,82,.3);
 }
 
 .row {
@@ -33,11 +33,11 @@ body, html {
 }
 
 .form {
-	padding: 5% 15% 10%;
+	padding: 5% 10% 10%;
 }
 
 .container > div {
-	padding: 10% 15% 5%;
+	padding: 10% 10% 5%;
 }
 
 h2 {
@@ -47,21 +47,45 @@ h2 {
 input {
 	margin-bottom: 20px;
 	width: 100%;
-	padding: 10%;
+	padding-left: 15px;
 	border: none;
-	background-color: lightgray;
+	background-color: #f2f2f2;
+	border-radius: 5px
 }
 
 input:not([type="checkbox"]) {
-	height: 40px;
+	height: 50px;
 }
 
 input[type="checkbox"] {
 	width: 7%;
-	margin-right: 5%;
+	margin-right: 15px;
 }
 
 input[type="submit"] {
 	margin-top: 20px;
 	width: 40%;
+	background-color: #3599DB;
+	padding: 5% 10%;
+	text-align: center;
+	height: auto;
+	font-weight: bold;
+	color: white;
+}
+
+input[type="submit"]:hover {
+	cursor: pointer;
+}
+
+/*tablet and mobile styles*/
+@media only screen and (max-width: 768px) {
+	.container {
+		background-color: white;
+		margin: auto;
+		width: 90vw;
+	}
+
+	.row {
+		display: block;
+	}
 }
