@@ -1,0 +1,67 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+body, html {
+	background-color: lightskyblue;
+	padding: 10% 0;
+	height: 100%;
+	font-family: 'Roboto', sans-serif;
+}
+
+.container {
+	background-color: white;
+	margin: auto;
+	width: 100%;
+	max-width: max-content;
+}
+
+.row {
+	display: flex;
+    justify-content: space-between;
+}
+
+.col {
+	width: 100%;
+}
+
+@media only screen and (min-width: 1025px) {
+	.col {
+		width: 48%;
+	}
+}
+
+.form {
+	padding: 5% 15% 10%;
+}
+
+.container > div {
+	padding: 10% 15% 5%;
+}
+
+h2 {
+	margin-bottom: 20px;
+}
+
+input {
+	margin-bottom: 20px;
+	width: 100%;
+	padding: 10%;
+	border: none;
+	background-color: lightgray;
+}
+
+input:not([type="checkbox"]) {
+	height: 40px;
+}
+
+input[type="checkbox"] {
+	width: 7%;
+	margin-right: 5%;
+}
+
+input[type="submit"] {
+	margin-top: 20px;
+	width: 40%;
+}
