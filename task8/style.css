@@ -78,7 +78,7 @@ input[type="checkbox"] {
 
 button {
 	margin-top: 20px;
-	width: 49%;
+	width: 40%;
 	background-color: #3599DB;
 	padding: 5% 7%;
 	text-align: center;
@@ -131,5 +131,11 @@ button > i {
 
 	.row.flex {
 		display: block;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	button {
+		width: 50%;
 	}
 }
