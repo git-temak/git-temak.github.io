@@ -27,7 +27,7 @@ html {
 	color: white;
 }
 
-.row {
+.row.flex {
 	display: flex;
     justify-content: flex-start;
 }
@@ -59,7 +59,7 @@ h2 {
 }
 
 input {
-	margin-bottom: 20px;
+	margin-top: 20px;
 	width: 100%;
 	padding-left: 15px;
 	border: none;
@@ -88,9 +88,19 @@ input[type="submit"] {
 	color: white;
 }
 
+.row > label {
+	margin-top: 20px;
+}
+
 .row > label a {
 	color: #3599DB;
 	text-decoration: none;
+}
+
+.error {
+	margin-top: 5px;
+	color: red;
+	font-size: 12px;
 }
 
 input[type="submit"]:hover {
@@ -109,7 +119,7 @@ input[type="submit"]:hover {
 		width: 85vw;
 	}
 
-	.row {
+	.row.flex {
 		display: block;
 	}
 }
