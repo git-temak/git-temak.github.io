@@ -1,7 +1,9 @@
 let checkValidation = setInterval(main, 5000);
 
 const form = document.getElementById("signup-form");
+const loaderIcon = document.querySelector(".fa-spin");
 
+// signup form check
 function main() {
 	// get all input fields
 	const fname = document.getElementById("fname");
@@ -22,7 +24,6 @@ function main() {
 	// regex check for names and email
 	const nameMatch = /[0-9+]/g;
 	const emailMatch = /^[a-z0-9.!#$%&'"*+/=?^_`{|}~-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)*$/i;
-
 
 	// validations
 	const namesFormat = () => {
@@ -118,8 +119,6 @@ function main() {
 
 	formValidation();
 }
-
-const loaderIcon = document.querySelector(".fa-spin");
 
 form.addEventListener('submit', function(e){
 	e.preventDefault();
