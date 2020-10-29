@@ -1,4 +1,6 @@
-let checkValidation = setInterval(main, 1000);
+let checkValidation = setInterval(main, 5000);
+
+const form = document.getElementById("signup-form");
 
 function main() {
 	// get all input fields
@@ -8,7 +10,7 @@ function main() {
 	const password = document.getElementById("password");
 	const cpassword = document.getElementById("confirm-password");
 	const checkbox = document.getElementById("check");
-	const submit = document.getElementById("submit");
+	const btnSubmit = document.getElementById("btn-submit");
 
 	// get all error elements
 	const fnameError = document.querySelector(".e-fname");
@@ -105,14 +107,22 @@ function main() {
 		}
 	}
 
+	const tosCheck = () => !checkbox.checked ? alert("Kindly accept terms and conditions") : true;
+
 	const formValidation = () => {
-		if (namesFormat() && emailFormat() && passMatch()) {
-			submit.removeAttribute("disabled");
-			submit.classList.add("btn-hover");
+		if (namesFormat() && emailFormat() && passMatch() && tosCheck()) {
+			btnSubmit.removeAttribute("disabled");
+			btnSubmit.classList.add("btn-hover");
 		}
 	}
 
 	formValidation();
 }
 
-// checkbox.addEventListener('click', formValidation);
+const loaderIcon = document.querySelector(".fa-spin");
+
+form.addEventListener('submit', function(e){
+	e.preventDefault();
+	loaderIcon.classList.remove("dnone");
+	setTimeout(function(){loaderIcon.classList.add("dnone");form.submit();}, 2000);
+});

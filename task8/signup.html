@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Simple form Validation</title>
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -14,7 +15,7 @@
 			<p>Please fill in this form to create an account!</p>
 		</div>
 		<hr>
-		<form class="form" name="form" method="POST">
+		<form class="form" name="form" id="signup-form" method="POST">
 			<div class="row flex">
 				<div class="col">
 					<input type="text" id="fname" name="fname" placeholder="First Name" value="">
@@ -38,11 +39,13 @@
 				<div class="error e-cpassword"></div>
 			</div>
 			<div class="row">
-				<input type="checkbox" id="check" name="checkbox" value="checkbox">
+				<input type="checkbox" id="check" name="checkbox" value="">
 				<label for="check">I accept the <a href="">Terms of Use</a> & <a href="">Privacy Policy</a>.</label>
 			</div>
 			<div class="row">
-				<input type="submit" id="submit" name="submit" value="Sign Up" disabled>
+				<button type="submit" form="signup-form" id="btn-submit" name="btn-submit" disabled>
+					<i class="fa fa-spinner fa-spin dnone"></i>Sign Up
+				</button>
 			</div>
 		</form>
 	</section>

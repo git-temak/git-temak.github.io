@@ -76,16 +76,22 @@ input[type="checkbox"] {
 	margin-right: 15px;
 }
 
-input[type="submit"] {
+button {
 	margin-top: 20px;
 	width: 40%;
 	background-color: #3599DB;
-	padding: 5% 10%;
+	padding: 5% 7%;
 	text-align: center;
 	height: auto;
 	font-size: 110%;
 	font-weight: bold;
 	color: white;
+	border: none;
+	border-radius: 5px;
+}
+
+button > i {
+	margin-right: 5px;
 }
 
 .row > label {
@@ -105,6 +111,10 @@ input[type="submit"] {
 
 .btn-hover:hover {
 	cursor: pointer;
+}
+
+.dnone {
+	display: none;
 }
 
 /*tablet and mobile styles*/
