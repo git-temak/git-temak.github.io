@@ -284,8 +284,15 @@ li {
 		color: hsl(228, 45%, 44%);
 	}
 
-/*mobile styles*/
-	@media only screen and (max-width: 768px) {
+/*responsive styles*/
+	@media only screen and (min-width: 1025px) and (max-width: 1439px) {
+		.hero-text {
+			padding-bottom: 20%;
+		    padding-top: 5%;
+		}
+	}
+
+	@media only screen and (max-width: 1024px) {
 		.container {
 			flex-direction: column;
 		}
@@ -304,6 +311,8 @@ li {
 
 		.hero-img {
 			background: url("./images/bg-intro-mobile.svg") no-repeat left center;
+			background-position: top center;
+		    background-size: cover;
 		}
 
 		.hero-text {
