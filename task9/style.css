@@ -248,10 +248,6 @@ li {
 	}
 
 	.social-icons > ul {
-		width: 30%;
-	}
-
-	.social-icons > ul {
 		padding-inline-start: 0;
 	}
 
@@ -264,12 +260,12 @@ li {
 		color: white;
 	}
 
-	footer .container > div:last-child {
+	.footer-col-4 {
 		width: 30%;
 		text-align: right;
 	}
 
-	footer .container > div:last-child > p {
+	.footer-col-4 > p {
 		margin-top: 55px;
 	}
 
@@ -294,7 +290,7 @@ li {
 			flex-direction: column-reverse;
 		}
 		
-		.col-50, .col, .card {
+		.col-50, .col, .card, .footer-col-1, .footer-menu1, .footer-menu2, .footer-col-4 {
 			width: 100%;
 		}
 
@@ -316,11 +312,37 @@ li {
 			text-align: center;
 		}
 
-		.service > .col {
+		.service > .col, .card {
 		    margin: 20px 0;
 		}
 
-		.card {
-		    margin: 20px 0;
+		footer {
+			padding: 30px 0;
+			text-align: center;
+		}
+
+		.dflex {
+		    justify-content: center;
+		}
+
+		.social-icons {
+		    margin-bottom: 30px;
+		}
+
+		.social-icons > ul > li {
+			padding: 0 10px;
+		}
+
+		.footer-menu1 > ul, .footer-menu2 > ul {
+			padding-inline-start: 0;
+		}
+
+		.footer-col-4 {
+		    margin-top: 30px;
+			text-align: center;
+		}
+
+		.footer-col-4 > p {
+			margin-top: 30px;
 		}
 	}
