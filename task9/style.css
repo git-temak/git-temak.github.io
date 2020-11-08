@@ -73,12 +73,17 @@ li {
 	display: none;
 }
 
+h2 {
+	font-size: 30px;
+}
+
 /*menu styles*/
 	.navbar {
 	    background-color: white;
 	    display: flex;
 	    padding: 20px;
 	    justify-content: space-around;
+	    align-items: center;
 	}
 
 	.navbarItems {
@@ -94,7 +99,7 @@ li {
 	    display: none;
 	}
 
-	@media only screen and (max-width: 768px) {
+	@media only screen and (max-width: 1024px) {
 	    .navbarItems,.navbar {
 	        flex-direction: column;
 	    }
@@ -103,6 +108,7 @@ li {
 	    }
 	    .navbar {
 	    	justify-content: start;
+	    	align-items: flex-start;
 	    }
 	    .items-right {
 	        margin-left: 0;
@@ -178,6 +184,14 @@ li {
 		margin-bottom: 20px;
 	}
 
+	.service h3 {
+		font-size: 22px;
+	}
+
+	.service p {
+		font-size: 16px;
+	}
+
 /*articles*/
 	.articles {
 		background: var(--LightGray);
@@ -214,7 +228,12 @@ li {
 
 	.card-text h5 {
 		color: var(--GrayishBlue);
-		font-size: 14px;
+		font-size: 12px;
+	}
+
+	.card-text h4 {
+		font-size: 16px;
+		font-weight: 300;
 	}
 
 	.card-text {
@@ -222,7 +241,7 @@ li {
 	}
 
 	.card-text p {
-		font-size: 16px;
+		font-size: 14px;
 	}
 
 /*footer*/

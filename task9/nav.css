@@ -64,7 +64,7 @@ a:hover, .btn:hover {
 	    display: none;
 	}
 
-	@media only screen and (max-width: 768px) {
+	@media only screen and (max-width: 1024px) {
 	    .navbarItems,.navbar {
 	        flex-direction: column;
 	    }
@@ -73,6 +73,7 @@ a:hover, .btn:hover {
 	    }
 	    .navbar {
 	    	justify-content: start;
+	    	align-items: flex-start;
 	    }
 	    .items-right {
 	        margin-left: 0;
