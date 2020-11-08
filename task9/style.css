@@ -287,7 +287,11 @@ li {
 /*mobile styles*/
 	@media only screen and (max-width: 768px) {
 		.container {
-			display: block;
+			flex-direction: column;
+		}
+
+		.hero-section {
+			flex-direction: column-reverse;
 		}
 		
 		.col-50, .col, .card {
@@ -298,7 +302,25 @@ li {
 			background: url("./images/bg-intro-mobile.svg") no-repeat left center;
 		}
 
+		.hero-text {
+			text-align: center;
+			padding-bottom: 70px;
+		}
+
+		.hero-text h1 {
+			font-size: 40px;
+		}
+
 		.services {
 			margin-top: 0px;
+			text-align: center;
+		}
+
+		.service > .col {
+		    margin: 20px 0;
+		}
+
+		.card {
+		    margin: 20px 0;
 		}
 	}
