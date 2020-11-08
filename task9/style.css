@@ -69,6 +69,10 @@ li {
 	background-image: linear-gradient(to right, #83e2a7, #81d5e2);
 }
 
+.mobile-only {
+	display: none;
+}
+
 /*menu styles*/
 	.navbar {
 	    background-color: white;
@@ -294,6 +298,10 @@ li {
 			width: 100%;
 		}
 
+		.mobile-only {
+			display: block;
+		}
+
 		.hero-img {
 			background: url("./images/bg-intro-mobile.svg") no-repeat left center;
 		}
@@ -314,6 +322,10 @@ li {
 
 		.service > .col, .card {
 		    margin: 20px 0;
+		}
+
+		.articles h2 {
+			text-align: center;
 		}
 
 		footer {
