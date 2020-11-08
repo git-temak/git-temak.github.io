@@ -94,6 +94,12 @@ li {
 	    .navbarItems,.navbar {
 	        flex-direction: column;
 	    }
+	    .navbarItems, .navButton {
+	    	display: none;
+	    }
+	    .navbar {
+	    	justify-content: start;
+	    }
 	    .items-right {
 	        margin-left: 0;
 	        text-align: center;
@@ -101,6 +107,7 @@ li {
 	    }
 	    .navbarToggleShow{
 	        display: flex;
+            text-align: center;
 	    }
 	    .navbarToggle{
 	        align-self: flex-end;

@@ -1,3 +1,10 @@
+const menuToggle = () => {
+    const navs = document.querySelectorAll('.navbarItems');
+    navs.forEach(nav => nav.classList.toggle('navbarToggleShow'));
+}
+  
+document.querySelector('.navbarToggle').addEventListener('click', menuToggle);
+
 let checkValidation = setInterval(main, 3000);
 
 const form = document.getElementById("login-form");
