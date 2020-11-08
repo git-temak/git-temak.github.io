@@ -1,0 +1,170 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+:root {
+	--DarkBlue: hsl(233, 26%, 24%);
+	--LimeGreen: hsl(136, 65%, 51%);
+	--BrightCyan: hsl(192, 70%, 51%);
+	--GrayishBlue: hsl(233, 8%, 62%);
+	--LightGrayishBlue: hsl(220, 16%, 96%);
+	--LightGray: hsl(0, 0%, 98%);
+}
+
+html {
+	background-color: var(--BrightCyan);
+	height: 100%;
+	font-family: 'Public Sans', sans-serif;
+}
+
+a {
+	color: var(--GrayishBlue);
+}
+
+a:hover {
+	color: #34c587;
+}
+
+.container {
+	background-color: white;
+	margin: auto;
+	margin-top: 5%;
+	width: 31vw;
+	box-shadow: 0 3px 7px rgba(19,50,82,.3);
+}
+
+.login-text {
+	margin-top: 15px;
+	text-align: center;
+	color: white;
+}
+
+.login-text a {
+	color: white;
+	text-decoration: underline;
+}
+
+.login-text a:hover {
+	color: white;
+	text-decoration: none;
+}
+
+.row.flex {
+	display: flex;
+    justify-content: flex-start;
+}
+
+.col {
+	width: 100%;
+}
+
+@media only screen and (min-width: 1024px) {
+	.col {
+		width: 48%;
+	}
+
+	.col-2 {
+		margin-left: 20px;
+	}
+}
+
+.form {
+	padding: 5% 10% 10%;
+}
+
+.container > div {
+	padding: 10% 10% 5%;
+}
+
+h2 {
+	margin-bottom: 20px;
+}
+
+input {
+	margin-top: 20px;
+	width: 100%;
+	padding-left: 15px;
+	border: none;
+	background-color: #f2f2f2;
+	border-radius: 5px
+}
+
+input:not([type="checkbox"]) {
+	height: 50px;
+}
+
+input[type="checkbox"] {
+	width: 7%;
+	margin-right: 15px;
+}
+
+.form .row button {
+	margin-top: 20px;
+	width: 40%;
+	background-color: #d3d3d3;
+	padding: 5% 6%;
+	text-align: center;
+	height: auto;
+	font-size: 110%;
+	font-weight: bold;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: not-allowed;
+}
+
+.form .row button > i {
+	margin-right: 5px;
+}
+
+.row > label {
+	margin-top: 20px;
+}
+
+.row > label a {
+	color: var(--BrightCyan);
+	text-decoration: none;
+}
+
+.row > label a:hover {
+	color: #34c587;
+}
+
+.error {
+	margin-top: 5px;
+	color: red;
+	font-size: 12px;
+}
+
+.btn-hover {
+	cursor: pointer !important;
+	background-image: linear-gradient(to right, var(--LimeGreen) , var(--BrightCyan));
+}
+
+.dnone {
+	display: none;
+}
+
+/*tablet and mobile styles*/
+@media only screen and (min-width: 1024px) and (max-width: 1439px) {
+	.container {
+		width: 60vw;
+	}
+}
+
+@media only screen and (max-width: 1023px) {
+	.container {
+		width: 85vw;
+	}
+
+	.row.flex {
+		display: block;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	.form .row button {
+		width: 50%;
+	}
+}

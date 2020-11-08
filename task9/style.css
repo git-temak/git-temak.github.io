@@ -1,0 +1,278 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	scroll-behavior: smooth;
+}
+
+:root {
+	--DarkBlue: hsl(233, 26%, 24%);
+	--LimeGreen: hsl(136, 65%, 51%);
+	--BrightCyan: hsl(192, 70%, 51%);
+	--GrayishBlue: hsl(233, 8%, 62%);
+	--LightGrayishBlue: hsl(220, 16%, 96%);
+	--LightGray: hsl(0, 0%, 98%);
+}
+
+body {
+	font-family: 'Public Sans', sans-serif;
+	font-size: 18px;
+	line-height: 1.5;
+	font-weight: 300;
+	color: var(--GrayishBlue);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: var(--DarkBlue);
+	font-weight: 400;
+	margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover, .btn:hover {
+	cursor: pointer;
+}
+
+.container {
+	display: flex;
+}
+
+.row {
+	width: 100%;
+}
+
+img {
+	width: 100%;
+}
+
+.dflex {
+	display: flex;
+}
+
+li {
+	list-style: none;
+}
+
+.btn {
+	border-radius: 20px;
+	padding: 12px 22px;
+	border: none;
+	background-image: linear-gradient(to right, var(--LimeGreen), var(--BrightCyan));
+	font-weight: 400;
+	color: white;
+}
+
+.btn:hover {
+	background-image: linear-gradient(to right, #83e2a7, #81d5e2);
+}
+
+/*menu styles*/
+	.navbar {
+	    background-color: white;
+	    display: flex;
+	    padding: 20px;
+	    justify-content: space-around;
+	}
+
+	.navbarItems {
+	    display: flex;
+	    color: var(--GrayishBlue);
+	}
+
+	.navbarLink {
+	    padding-right: 30px;
+	}
+
+	.navbarToggle {
+	    display: none;
+	}
+
+	@media only screen and (max-width: 768px) {
+	    .navbarItems,.navbar {
+	        flex-direction: column;
+	    }
+	    .items-right {
+	        margin-left: 0;
+	        text-align: center;
+	        display: none;
+	    }
+	    .navbarToggleShow{
+	        display: flex;
+	    }
+	    .navbarToggle{
+	        align-self: flex-end;
+	        display: initial;
+	        position: absolute;
+	        cursor: pointer;
+	    }
+	    .navbarLink{
+	        padding: 15px;
+	    }
+	}
+
+/*hero*/
+	.hero-section {
+		background: var(--LightGray);
+	}
+
+	.hero-text {
+		margin: auto;
+		padding: 0 10%;
+	}
+
+	.hero-text h1 {
+		font-size: 50px;
+	}
+
+	.hero-text p {
+		padding-bottom: 30px;
+	}
+
+	.hero-img {
+		background: url("./images/bg-intro-desktop.svg") no-repeat left center;
+		background-size: cover;
+	}
+
+	.col-40 {
+		width: 40%;
+	}
+
+	.col-50 {
+		width: 50%;
+	}	
+
+	.col-60 {
+		width: 60%;
+	}
+
+/*services*/
+	.services {
+		margin-top: -150px;
+		background-color: var(--LightGrayishBlue);
+		padding: 70px 10%;
+	}
+
+	.service {
+		padding: 50px 0 0;
+	}
+
+	.service > .col {
+		margin: 10px;
+	}
+
+	.service > .col > svg {
+		margin-bottom: 20px;
+	}
+
+/*articles*/
+	.articles {
+		background: var(--LightGray);
+		padding: 70px 10%;
+	}
+
+	.article {
+		padding: 30px 0 0;
+	}
+
+	a:hover h4 {
+		background-image: linear-gradient(to right, var(--LimeGreen) , var(--BrightCyan));
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.card {
+		border-radius: 5px;
+		background-color: white;
+		margin: 15px;
+	}
+
+	.article > .card:first-child {
+		margin-left: 0;
+	}
+
+	.article > .card:last-child {
+		margin-right: 0;
+	}
+
+	.card > img {
+		border-radius: 5px 5px 0 0;
+	}
+
+	.card-text h5 {
+		color: var(--GrayishBlue);
+		font-size: 14px;
+	}
+
+	.card-text {
+		padding: 20px;
+	}
+
+	.card-text p {
+		font-size: 16px;
+	}
+
+/*footer*/
+footer {
+	background-color: var(--DarkBlue);
+	padding: 3% 10%;
+}
+
+footer .container {
+    justify-content: space-around;
+}
+
+footer ul > li {
+	padding-bottom: 20px;
+}
+
+footer ul > li > a:hover {
+	color: #34c587;
+}
+
+footer ul > li > a:hover svg > path {
+	fill: #34c587;
+}
+
+.social-icons {
+	margin-top: 30px;
+}
+
+.social-icons > ul {
+	width: 30%;
+}
+
+.social-icons > ul {
+	padding-inline-start: 0;
+}
+
+.social-icons > ul > li {
+	padding: 40px 20px 0 0;
+}
+
+.footer-menu1, .footer-menu2 {
+	width: 20%;
+	color: white;
+}
+
+footer .container > div:last-child {
+	width: 30%;
+	text-align: right;
+}
+
+footer .container > div:last-child > p {
+	margin-top: 55px;
+}
+
+/*copyright*/
+	.attribution {
+		background-color: #070707; 
+		font-size: 11px;
+		text-align: center; 
+	}
+	
+	.attribution a {
+		color: hsl(228, 45%, 44%);
+	}
