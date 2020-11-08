@@ -222,56 +222,56 @@ li {
 	}
 
 /*footer*/
-footer {
-	background-color: var(--DarkBlue);
-	padding: 3% 10%;
-}
+	footer {
+		background-color: var(--DarkBlue);
+		padding: 3% 10%;
+	}
 
-footer .container {
-    justify-content: space-around;
-}
+	footer .container {
+	    justify-content: space-around;
+	}
 
-footer ul > li {
-	padding-bottom: 20px;
-}
+	footer ul > li {
+		padding-bottom: 20px;
+	}
 
-footer ul > li > a:hover {
-	color: #34c587;
-}
+	footer ul > li > a:hover {
+		color: #34c587;
+	}
 
-footer ul > li > a:hover svg > path {
-	fill: #34c587;
-}
+	footer ul > li > a:hover svg > path {
+		fill: #34c587;
+	}
 
-.social-icons {
-	margin-top: 30px;
-}
+	.social-icons {
+		margin-top: 30px;
+	}
 
-.social-icons > ul {
-	width: 30%;
-}
+	.social-icons > ul {
+		width: 30%;
+	}
 
-.social-icons > ul {
-	padding-inline-start: 0;
-}
+	.social-icons > ul {
+		padding-inline-start: 0;
+	}
 
-.social-icons > ul > li {
-	padding: 40px 20px 0 0;
-}
+	.social-icons > ul > li {
+		padding: 40px 20px 0 0;
+	}
 
-.footer-menu1, .footer-menu2 {
-	width: 20%;
-	color: white;
-}
+	.footer-menu1, .footer-menu2 {
+		width: 20%;
+		color: white;
+	}
 
-footer .container > div:last-child {
-	width: 30%;
-	text-align: right;
-}
+	footer .container > div:last-child {
+		width: 30%;
+		text-align: right;
+	}
 
-footer .container > div:last-child > p {
-	margin-top: 55px;
-}
+	footer .container > div:last-child > p {
+		margin-top: 55px;
+	}
 
 /*copyright*/
 	.attribution {
@@ -282,4 +282,23 @@ footer .container > div:last-child > p {
 	
 	.attribution a {
 		color: hsl(228, 45%, 44%);
+	}
+
+/*mobile styles*/
+	@media only screen and (max-width: 768px) {
+		.container {
+			display: block;
+		}
+		
+		.col-50, .col, .card {
+			width: 100%;
+		}
+
+		.hero-img {
+			background: url("./images/bg-intro-mobile.svg") no-repeat left center;
+		}
+
+		.services {
+			margin-top: 0px;
+		}
 	}
