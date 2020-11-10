@@ -26,14 +26,12 @@ function main() {
 	const emailFormat = () => {
 		if (email.value === "") {
 			emailError.innerHTML = "Please enter your email address";
-			document.form.email.focus();
 			return false;
 		} if (email.value.match(emailMatch)) {
 			emailError.innerHTML = "";
 			return true;
 		} else {
 			emailError.innerHTML = "Please ensure your email is valid";
-			document.form.email.focus();
 			return false;
 		}
 	}
@@ -41,7 +39,6 @@ function main() {
 	const passMatch = () => {
 		if (password.value === "") {
 			passError.innerHTML = "Please type in your password";
-			document.form.password.focus();
 			return false;
 		} else {
 			passError.innerHTML = "";

@@ -29,25 +29,20 @@ function main() {
 	const namesFormat = () => {
 		if (fname.value === "" && lname.value === "") {
 			fnameError.innerHTML = "Please enter your first name";
-			document.form.fname.focus();
 			return false;
 		} if (fname.value === "") {
 			fnameError.innerHTML = "Please enter your first name";
-			document.form.fname.focus();
 			return false;
 		} if (fname.value.match(nameMatch)) {
 			fnameError.innerHTML = "Please remove any number present in your name";
-			document.form.fname.focus();
 			return false;
 		} else {
 			fnameError.innerHTML = "";
 			if (lname.value === "") {
 				lnameError.innerHTML = "Please enter your last name";
-				document.form.lname.focus();
 				return false;
 			} if (lname.value.match(nameMatch)) {
 				lnameError.innerHTML = "Please remove any number present in your name";
-				document.form.lname.focus();
 				return false;
 			} else {
 				fnameError.innerHTML = "";
@@ -60,14 +55,12 @@ function main() {
 	const emailFormat = () => {
 		if (email.value === "") {
 			emailError.innerHTML = "Please enter your email address";
-			document.form.email.focus();
 			return false;
 		} if (email.value.match(emailMatch)) {
 			emailError.innerHTML = "";
 			return true;
 		} else {
 			emailError.innerHTML = "Please ensure your email is valid";
-			document.form.email.focus();
 			return false;
 		}
 	}
@@ -75,30 +68,24 @@ function main() {
 	const passMatch = () => {
 		if (password.value === "" && cpassword.value === "") {
 			passError.innerHTML = "Please type in your password";
-			document.form.password.focus();
 			return false;
 		} if (password.value === "") {
 			passError.innerHTML = "Please type in your password";
-			document.form.password.focus();
 			return false;
 		} if (password.value.length < 8) {
 			passError.innerHTML = "Password should be at least 8 characters long";
-			document.form.password.focus();
 			return false;
 		} else {
 			passError.innerHTML = "";
 			if (cpassword.value === "") {
 				cpassError.innerHTML = "Please type in your password again";
-				document.form.cpassword.focus();
 				return false;
 			} if (cpassword.value.length < 8) {
 				cpassError.innerHTML = "Password does not match";
-				document.form.cpassword.focus();
 				return false;
 			} if (password.value !== cpassword.value) {
 				passError.innerHTML = "Passwords do not match";
 				cpassError.innerHTML = "Passwords do not match";
-				document.form.cpassword.focus()
 				return false;
 			} else {
 				passError.innerHTML = "";
