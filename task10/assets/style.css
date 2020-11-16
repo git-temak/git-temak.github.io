@@ -76,79 +76,98 @@ a:hover {
 	    }
 	}
 
-.hero-text {
-	text-align: center;
-	color: white;
-	position: relative;
-    top: 20%;
-}
+/*main page styles*/
+	.hero-text {
+		text-align: center;
+		color: white;
+		position: relative;
+	    top: 20%;
+	}
 
-.hero-text h1 {
-	font-size: 3rem;
-	margin-bottom: 48px;
-}
+	.hero-text h1 {
+		font-size: 3rem;
+		margin-bottom: 48px;
+	}
 
-.hero-text p {
-	font-size: 2rem;
-}
+	.hero-text p {
+		font-size: 2rem;
+	}
 
-.country-selector {
-	margin-top: 48px;
-	text-align: center;
-}
+	.country-selector {
+		margin-top: 48px;
+		text-align: center;
+	}
 
-.country-text {
-	font-size: 24px;
-}
+	.country-text {
+		font-size: 24px;
+	}
 
-.country-selector select {
-	margin-top: 48px;
-	padding: 7px 22% 7px 10px;
-    border-radius: 5px;
-    border-color: #b7b7b7;
-}
+	.country-selector select {
+		margin-top: 48px;
+		padding: 7px 22% 7px 10px;
+	    border-radius: 5px;
+	    border-color: #b7b7b7;
+	}
 
-.country-info {
-	display: none;
-}
+	.country-info {
+		display: none;
+	}
 
-#country-card {
-	margin: 40px auto;
-	max-width: 450px;
-    width: 100%;
-    background-color: white;
-    border-radius: 20px;
-    padding: 25px;
-	box-shadow: 0px 25px 115px 0px rgba(18.999999999999996, 50.00000000000006, 81.99999999999999, 0.2);
-}
+	#country-card {
+		margin: 40px auto;
+		max-width: 450px;
+	    width: 100%;
+	    background-color: white;
+	    border-radius: 20px;
+	    padding: 25px;
+		box-shadow: 0px 25px 115px 0px rgba(18.999999999999996, 50.00000000000006, 81.99999999999999, 0.2);
+	}
 
-.country-head {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
-}
+	.country-head {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
 
-.country-head h2 {
-	font-size: 2rem;
-}
+	.country-head h2 {
+		font-size: 2rem;
+	}
 
-.country-head img {
-	height: 40px;
-}
+	.country-head img {
+		height: 40px;
+	}
 
-#country-card hr {
-	margin: 20px 0;
-}
+	#country-card hr {
+		margin: 20px 0;
+	}
 
-.country-body {
-	display: flex;
-}
+	.country-body {
+		display: flex;
+	}
 
-.data-names p {
-	font-weight: bold;
-}
+	.data-names p {
+		font-weight: bold;
+	}
 
-.data {
-	margin-left: 10%;
-}
+	.data {
+		margin-left: 10%;
+	}
+
+/*countries list page styles*/
+	header#country-header {
+		height: 40vh;
+	}
+
+	#country-header .hero-text {
+	    top: 10%;
+	}
+
+	.table {
+		margin: 40px 10%;
+	}
+
+	thead tr {
+		background-color: black;
+		color: white;
+	}
