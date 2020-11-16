@@ -1,0 +1,150 @@
+* {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+	margin: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+body {
+	font-family: "Roboto", sans-serif;
+}
+
+header {
+	background-image: url("../assets/img/countries_flags.png");
+	height: 60vh;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/*menu styles*/
+	.navbar {
+	    display: flex;
+	    padding: 20px 40px;
+	    justify-content: space-between;
+        align-items: center;
+        position: sticky;
+	}
+
+	.navbarItems {
+	    display: flex;
+	}
+
+	.navbarLink {
+	    padding-right: 30px;
+	}
+
+	.navbarToggle {
+	    display: none;
+	}
+
+	@media only screen and (max-width: 1024px) {
+	    .navbarItems,.navbar {
+	        flex-direction: column;
+	    }
+	    .navbarItems, .navButton {
+	    	display: none;
+	    }
+	    .navbar {
+	    	justify-content: center;
+	    	align-items: flex-start;
+	    }
+	    .items-right {
+	        margin-left: 0;
+	        text-align: center;
+	        display: none;
+	    }
+	    .navbarToggleShow{
+	        display: flex;
+            text-align: center;
+	    }
+	    .navbarToggle{
+	        align-self: flex-end;
+	        display: initial;
+	        position: absolute;
+	        cursor: pointer;
+	    }
+	    .navbarLink{
+	        padding: 15px;
+	    }
+	}
+
+.hero-text {
+	text-align: center;
+	color: white;
+	position: relative;
+    top: 20%;
+}
+
+.hero-text h1 {
+	font-size: 3rem;
+	margin-bottom: 48px;
+}
+
+.hero-text p {
+	font-size: 2rem;
+}
+
+.country-selector {
+	margin-top: 48px;
+	text-align: center;
+}
+
+.country-text {
+	font-size: 24px;
+}
+
+.country-selector select {
+	margin-top: 48px;
+	padding: 7px 22% 7px 10px;
+    border-radius: 5px;
+    border-color: #b7b7b7;
+}
+
+#country-card {
+	margin: 40px auto;
+	max-width: 450px;
+    width: 100%;
+    background-color: white;
+    border-radius: 20px;
+    padding: 25px;
+	box-shadow: 0px 25px 115px 0px rgba(18.999999999999996, 50.00000000000006, 81.99999999999999, 0.2);
+}
+
+.country-head {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.country-head h2 {
+	font-size: 2rem;
+}
+
+.country-head img {
+	height: 40px;
+}
+
+#country-card hr {
+	margin: 20px 0;
+}
+
+.country-body {
+	display: flex;
+}
+
+.data-names p {
+	font-weight: bold;
+}
+
+.data {
+	margin-left: 10%;
+}
