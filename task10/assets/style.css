@@ -108,6 +108,10 @@ a:hover {
     border-color: #b7b7b7;
 }
 
+.country-info {
+	display: none;
+}
+
 #country-card {
 	margin: 40px auto;
 	max-width: 450px;

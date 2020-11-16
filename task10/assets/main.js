@@ -13,6 +13,7 @@ const continent = document.getElementById("continent");
 const subRegion = document.getElementById("sub-region");
 const currency = document.getElementById("currency");
 const language = document.getElementById("language");
+const countrySection = document.querySelector(".country-info");
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			let values = Object.values(data);
 			values.forEach(country => {
 				if (selectedCountry.value == country.alpha3Code) {
+					countrySection.style.display = "block";
 					countryName.innerHTML = country.name;
 					flag.src = country.flag;
 					capital.innerHTML = country.capital;
@@ -36,5 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			})
 		})
 		.catch(error => console.log(error))
+
+		if(selectedCountry.value == "") {
+			countrySection.style.display = "none";
+		}
 	}
 })
