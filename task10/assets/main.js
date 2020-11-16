@@ -6,6 +6,13 @@ const menuToggle = () => {
 document.querySelector('.navbarToggle').addEventListener('click', menuToggle);
 
 const selectedCountry = document.getElementById("country");
+const countryName = document.getElementById("country-name");
+const flag = document.getElementById("flag");
+const capital = document.getElementById("capital");
+const continent = document.getElementById("continent");
+const subRegion = document.getElementById("sub-region");
+const currency = document.getElementById("currency");
+const language = document.getElementById("language");
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -16,8 +23,15 @@ document.addEventListener('DOMContentLoaded', () => {
 			let values = Object.values(data);
 			values.forEach(country => {
 				if (selectedCountry.value == country.alpha3Code) {
-					console.log("we selected:", country.name)
-					console.log("country:", country)
+					countryName.innerHTML = country.name;
+					flag.src = country.flag;
+					capital.innerHTML = country.capital;
+					continent.innerHTML = country.region;
+					subRegion.innerHTML = country.subregion;
+					currency.innerHTML = `${country.currencies[0].name} (${country.currencies[0].symbol})`;
+					const langs = [];
+					country.languages.forEach(lang => langs.push(lang.name));
+					language.innerHTML = langs;
 				}
 			})
 		})
