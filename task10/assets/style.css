@@ -12,6 +12,7 @@ body {
 
 header {
 	background-image: url("../assets/img/countries_flags.png");
+	background-repeat: no-repeat;
 	height: 60vh;
 }
 
@@ -31,6 +32,13 @@ a:hover {
 	    justify-content: space-between;
         align-items: center;
         position: sticky;
+	}
+
+	.dflex {
+		display: flex;
+		flex-direction: column;
+	    width: 100%;
+	    justify-content: center;
 	}
 
 	.navbarItems {
@@ -64,6 +72,7 @@ a:hover {
 	    .navbarToggleShow{
 	        display: flex;
             text-align: center;
+            margin: auto;
 	    }
 	    .navbarToggle{
 	        align-self: flex-end;
@@ -172,6 +181,7 @@ a:hover {
 
 	.table {
 		margin: 40px 10%;
+		overflow-x: auto;
 	}
 
 	thead tr {
@@ -212,4 +222,23 @@ a:hover {
 	  to {
 	    transform: rotate(360deg);
 	  }
+	}
+
+/*responsiveness*/
+	@media only screen and (max-width: 414px) {
+		.hero-text, .country-selector, .country-info {
+			padding: 20px;
+		}
+
+		.hero-text h1 {
+			font-size: 1.5rem;
+		}
+
+		.hero-text p, .country-text {
+			font-size: 1rem;
+		}
+
+		.country-selector select {
+			padding: 7px 20px 7px 10px;
+		}
 	}
