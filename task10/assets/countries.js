@@ -1,5 +1,6 @@
 const table = document.getElementById("country-table");
 const tableBody = document.getElementById("table-body");
+const search = document.getElementById("search");
 
 const spinner = document.getElementById("spinner");
 
@@ -39,5 +40,24 @@ document.addEventListener('DOMContentLoaded', () => {
 		}, 1000);
 	})
 	.catch(error => console.log(error))
+
+	const searchCountry = () => {
+		filter = search.value.toUpperCase();
+		tr = tableBody.getElementsByTagName("tr");
+
+		for (i = 0; i < tr.length; i++) {
+		    td = tr[i].getElementsByTagName("td")[1];
+		    if (td) {
+				txtValue = td.textContent || td.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+		    }
+		}
+	}
+
+	search.onkeyup = searchCountry;
 
 })
