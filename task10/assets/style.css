@@ -13,6 +13,7 @@ body {
 header {
 	background-image: url("../assets/img/countries_flags.png");
 	background-repeat: no-repeat;
+	background-size: cover;
 	height: 60vh;
 }
 
