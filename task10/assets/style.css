@@ -168,11 +168,11 @@ a:hover {
 
 /*countries list page styles*/
 	header#country-header {
-		height: 40vh;
+		height: 50vh;
 	}
 
 	#country-header .hero-text {
-	    top: 10%;
+	    top: 20%;
 	}
 
 	#search {
