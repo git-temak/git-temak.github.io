@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					currency.innerHTML = `${country.currencies[0].name} (${country.currencies[0].symbol})`;
 					const langs = [];
 					country.languages.forEach(lang => langs.push(lang.name));
-					language.innerHTML = langs;
+					language.innerHTML = langs.join(', ');
 				}
 			})
 		})
