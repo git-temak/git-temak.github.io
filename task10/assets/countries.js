@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			cell4.innerHTML = country.region;
 			cell5.innerHTML = country.subregion;
 			cell6.innerHTML = `${country.currencies[0].name} (${country.currencies[0].symbol})`;
-			cell7.innerHTML = langs;
+			cell7.innerHTML = langs.join(', ');
 		})
 
 		setTimeout(() => {
