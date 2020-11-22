@@ -63,13 +63,17 @@ document.addEventListener('DOMContentLoaded', () => {
 				txtValue = searchName.textContent || searchName.innerText;
 				if (txtValue.toUpperCase().indexOf(filter) > -1) {
 					card[i].classList.remove("dnone");
+					if (document.querySelector(".errorText")) {
+						document.querySelector(".errorText").remove();
+					}
 				} else {
 					card[i].classList.add("dnone");
-					
+
 					// display an error message when search result is empty
 					const count = dataRow.querySelectorAll('.dnone').length;
 					if (count == card.length){
 						const errorText = document.createElement("div");
+						errorText.classList.add("errorText");
 						errorText.innerText = 'There are no results for your query. Please try again.'
 						dataRow.appendChild(errorText);
 					}

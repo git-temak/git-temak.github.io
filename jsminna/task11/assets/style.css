@@ -195,7 +195,6 @@ header {
 	}
 
 	.container {
-		max-width: 1440px;
 		width: 90%;
 		margin: auto;
 	}
@@ -277,6 +276,12 @@ header {
 	}
 
 /*responsiveness*/
+	@media only screen and (min-width: 778px) {
+		.phone-card {
+	        margin-right: 20px;
+	    }
+	}
+
 	@media only screen and (max-width: 414px) {
 		.hero-text {
 			padding: 20px;
@@ -292,6 +297,10 @@ header {
 
 		#search {
 			width: 100%;
+		}
+
+		.container {
+		    width: 80%;
 		}
 	}
 
