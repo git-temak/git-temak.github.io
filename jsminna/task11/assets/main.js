@@ -65,7 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
 					card[i].classList.remove("dnone");
 				} else {
 					card[i].classList.add("dnone");
-					if (dataSection.clientHeight == "0"){
+					const count = dataRow.querySelectorAll('.dnone').length;
+					if (count == card.length){
 						const errorText = document.createElement("div");
 						errorText.innerText = 'There are no results for your query. Please try again.'
 						dataRow.appendChild(errorText);
