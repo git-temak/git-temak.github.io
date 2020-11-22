@@ -65,6 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
 					card[i].classList.remove("dnone");
 				} else {
 					card[i].classList.add("dnone");
+					
+					// display an error message when search result is empty
 					const count = dataRow.querySelectorAll('.dnone').length;
 					if (count == card.length){
 						const errorText = document.createElement("div");
