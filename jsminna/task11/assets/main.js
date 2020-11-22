@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			spinner.setAttribute('hidden', '')
 		}, 1000);
 	})
-	.catch(error => console.log(error))
+	.catch(error => alert(error))
 
 	// search through the results
 	const searchNumbers = () => {
@@ -65,7 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
 					card[i].classList.remove("dnone");
 				} else {
 					card[i].classList.add("dnone");
-					if (dataSection.clientHeight == "0"){
+					
+					// display an error message when search result is empty
+					const count = dataRow.querySelectorAll('.dnone').length;
+					if (count == card.length){
 						const errorText = document.createElement("div");
 						errorText.innerText = 'There are no results for your query. Please try again.'
 						dataRow.appendChild(errorText);
