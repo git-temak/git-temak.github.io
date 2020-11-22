@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			spinner.setAttribute('hidden', '')
 		}, 1000);
 	})
-	.catch(error => console.log(error))
+	.catch(error => alert(error))
 
 	// search through the results
 	const searchNumbers = () => {
