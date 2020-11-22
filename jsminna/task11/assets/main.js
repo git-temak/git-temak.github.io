@@ -62,10 +62,14 @@ document.addEventListener('DOMContentLoaded', () => {
 		    if (searchName) {
 				txtValue = searchName.textContent || searchName.innerText;
 				if (txtValue.toUpperCase().indexOf(filter) > -1) {
-					card[i].style.display = "";
+					card[i].classList.remove("dnone");
 				} else {
-					card[i].style.display = "none";
-					// console.log(card[i].style.display)
+					card[i].classList.add("dnone");
+					if (dataSection.clientHeight == "0"){
+						const errorText = document.createElement("div");
+						errorText.innerText = 'There are no results for your query. Please try again.'
+						dataRow.appendChild(errorText);
+					}
 				}
 		    }
 		}
