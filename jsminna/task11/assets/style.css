@@ -310,6 +310,12 @@ header {
 	    }
 	}
 
+	@media only screen and (max-width: 768px) {
+		#search {
+			width: 90%;
+		}
+	}
+
 	@media only screen and (max-width: 414px) {
 		.hero-text {
 			padding: 20px;
@@ -321,10 +327,6 @@ header {
 
 		.hero-text p {
 			font-size: 1rem;
-		}
-
-		#search {
-			width: 100%;
 		}
 
 		.container {
