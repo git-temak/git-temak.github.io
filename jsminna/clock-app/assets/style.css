@@ -70,6 +70,10 @@ body {
 	font-weight: 700;
 }
 
+.cur-timezone {
+	font-weight: 400;
+}
+
 .location {
 	font-weight: 500;
 }
