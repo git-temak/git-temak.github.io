@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="assets/style.css">
     <title>Clock App</title>
 </head>
@@ -10,31 +11,19 @@
     <!-- header -->
     <section id="main">
     	<!-- quotes -->
-        <div class="quotes half-col">
-        	<div class="container">
-        		<p>"This is a quote telling you that it is a quote."</p>
-        		<h3>Ada Lovelance</h3>
-        	</div>
-			<span class="iconify" data-icon="fa:refresh" data-inline="false"></span>
-        </div>
+        <div class="quotes half-col"></div>
 
         <!-- time -->
         <div class="row time-section">
         	<div class="time-data half-col">
-            	<div class="greeting">
-            		<!-- <span class="daytime">good morning, its currently</span> -->
-            	</div>
+            	<div class="greeting"></div>
             	<div class="time">
             		<span class="cur-time"></span>
             		<span class="cur-timezone"></span>
             	</div>
             	<div class="location"></div>
             </div>
-            <div class="half-col">
-            	<div class="reveal">more
-					<span class="iconify" data-icon="bx:bx-chevron-down" data-inline="false"></span>
-            	</div>
-            </div>
+            <div class="reveal-section half-col"></div>
         </div>
     </section>
 
@@ -43,5 +32,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.32/moment-timezone.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.32/moment-timezone-with-data.min.js"></script>
     <script src="assets/main.js"></script>
+    <script src="assets/quotes.js"></script>
 </body>
 </html>

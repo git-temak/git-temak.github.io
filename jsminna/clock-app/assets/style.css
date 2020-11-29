@@ -32,6 +32,7 @@ body {
 .quotes {
 	display: flex;
 	font-size: 0.875rem;
+	line-height: 2;
 }
 
 .quotes h3 {
@@ -39,8 +40,15 @@ body {
 	margin-top: 20px;
 }
 
-.quotes .iconify {
+.quotes .fa-refresh {
 	margin-left: 10px;
+	margin-top: 5px;
+	color: rgba(255,255,255,0.7);
+	cursor: pointer;
+}
+
+.fa-spin {
+  animation: fa-spin 1s infinite linear;
 }
 
 .row {
