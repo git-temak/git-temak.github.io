@@ -31,7 +31,7 @@ body {
 
 .quotes {
 	display: flex;
-	font-size: 0.875rem;
+	font-size: 0.925rem;
 	line-height: 2;
 }
 
@@ -119,17 +119,24 @@ body {
 }
 
 /*responsiveness*/
-@media screen and (max-width: 500px) {
-	#main {
-		padding: 7%;
+@media screen and (max-width: 800px) {
+	.half-col {
+		width: 100%;
 	}
 
 	.row {
 		flex-direction: column;
 	}
 
-	.half-col {
-		width: 100%;
+	.reveal {
+		margin-left: unset;
+		margin-top: 15%;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	#main {
+		padding: 7%;
 	}
 
 	.cur-time {
@@ -137,7 +144,10 @@ body {
 	}
 
 	.reveal {
-		margin-left: unset;
-		margin-top: 40px;
+		margin-top: 20%;
+	}
+
+	.quotes .fa-refresh {
+	    font-size: 24px;
 	}
 }

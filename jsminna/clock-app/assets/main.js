@@ -4,6 +4,7 @@ const timeEl = document.querySelector('.cur-time');
 const timezoneEl = document.querySelector('.cur-timezone');
 const locationEl = document.querySelector('.location');
 const revealSection = document.querySelector('.reveal-section');
+const main = document.getElementById('main');
 const currentTime = new Date();
 
 //get browsers timezone in IANA format
@@ -47,13 +48,26 @@ document.addEventListener('DOMContentLoaded', () => {
 	greetingText = document.createElement('span');
 	greeting.classList.add('daytime');
 	greetingText.innerText = 'good morning, its currently';
+	// mobile text
+	if (window.innerWidth < 500) {
+		greetingText.innerText = 'good morning';
+	}
 	greeting.appendChild(icon);
 	greeting.appendChild(greetingText);
 
-	// change text and icon once its evening
+	// change text and icon once its afternoon or evening
 	if (currentTime.getHours() >= 12) {
+		greetingText.innerText = 'good afternoon, its currently';
+		if (window.innerWidth < 500) {
+			greetingText.innerText = 'good afternoon';
+		}
+	} if (currentTime.getHours() >= 17) {
+		main.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/img/night-header.jpg')";
 		greetingText.innerText = 'good evening, its currently';
 		icon.innerHTML = `<span class="iconify" data-icon="bi:moon"></span>`;
+		if (window.innerWidth < 500) {
+			greetingText.innerText = 'good evening';
+		}
 	}
 
 	const reveal = document.createElement('div');
@@ -68,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	
 	refreshBtn.onclick = () => {
 		randomQuote();
+		refreshBtn.classList.add('fa-spin');
 		setTimeout(() => {
 			refreshBtn.classList.remove('fa-spin');
 		}, 500);
