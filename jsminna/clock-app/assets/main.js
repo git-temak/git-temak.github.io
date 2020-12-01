@@ -139,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const hideInfoSection = () => {
 		container.style.height = '90%';
+		container.style.transition = 'height 0.6s';
 		revealBtn.innerText = 'more';
 		revealBtnIcon.innerHTML = iconDown;
 		revealBtn.appendChild(revealBtnIcon);

@@ -131,6 +131,19 @@ body {
 	justify-content: space-between;
 	padding: 0 15%;
 	letter-spacing: 3px;
+	animation: slide-up 0.65s linear;
+}
+
+@keyframes slide-up {
+	0% {
+		opacity: 0;
+		height: 100%;
+	}
+	
+	100% {
+		opacity: 1;
+		height: 50%;
+	}
 }
 
 .info h3 {
@@ -173,6 +186,20 @@ body {
 		margin-left: unset;
 		margin-top: 15%;
 	}
+
+	.info .right-half {
+		border-left: none;
+		padding-left: 0;
+	}
+
+	.info {
+		padding-top: 5%;
+		flex-direction: row;
+	}
+
+	.info p {
+		font-size: 2rem;
+	}
 }
 
 @media screen and (max-width: 500px) {
@@ -190,5 +217,13 @@ body {
 
 	.quotes .fa-refresh {
 	    font-size: 24px;
+	}
+
+	.info {
+		flex-direction: column;
+	}
+
+	.info p {
+		font-size: 1rem;
 	}
 }
