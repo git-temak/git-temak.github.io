@@ -212,6 +212,7 @@ body {
 	}
 
 	.container {
+		height: 80%;
 		padding: 7%;
 	}
 
@@ -244,11 +245,11 @@ body {
 	.left-half {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: space-between;
-		margin-bottom: 16px;
+		justify-content: space-around;
 	}
 
 	.right-half {
+		margin-top: 24px;
 		display: grid;
 	    grid-template-columns: auto 7%;
 	}
