@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			infoSection.style.display = 'flex';
 			createInfoSection();
 			if (window.innerWidth < 500) {
-				container.style.height = '50%';
+				container.style.height = '60%';
 				infoSection.style.height = '40%';
 				timeSection.style.margin = 'auto';
 			}
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			revealBtnIcon.innerHTML = iconUp;
 			revealBtn.appendChild(revealBtnIcon);
 			if (window.innerWidth < 500) {
-				container.style.height = '50%';
+				container.style.height = '60%';
 				infoSection.style.height = '40%';
 				timeSection.style.margin = 'auto';
 			}
