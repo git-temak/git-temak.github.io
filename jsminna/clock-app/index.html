@@ -8,23 +8,31 @@
     <title>Clock App</title>
 </head>
 <body>
-    <!-- header -->
     <section id="main">
-    	<!-- quotes -->
-        <div class="quotes half-col"></div>
+    	<!-- main content -->
+    	<div class="container">
+    		<!-- quotes -->
+	        <div class="quotes half-col"></div>
+    	
+	        <!-- time -->
+	        <div class="row time-section">
+	        	<div class="time-data half-col">
+	            	<div class="greeting"></div>
+	            	<div class="time">
+	            		<span class="cur-time"></span>
+	            		<span class="cur-timezone"></span>
+	            	</div>
+	            	<div class="location"></div>
+	            </div>
+	            <div class="reveal-section half-col"></div>
+	        </div>
+	    </div>
 
-        <!-- time -->
-        <div class="row time-section">
-        	<div class="time-data half-col">
-            	<div class="greeting"></div>
-            	<div class="time">
-            		<span class="cur-time"></span>
-            		<span class="cur-timezone"></span>
-            	</div>
-            	<div class="location"></div>
-            </div>
-            <div class="reveal-section half-col"></div>
-        </div>
+	    <!-- additional info -->
+	    <div class="row info">
+	    	<div class="half-col left-half"></div>
+	    	<div class="half-col right-half"></div>
+	    </div>
     </section>
 
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
