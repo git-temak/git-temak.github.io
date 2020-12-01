@@ -153,8 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			infoSection.style.display = 'flex';
 			createInfoSection();
 			if (window.innerWidth < 500) {
-				container.style.height = '60%';
-				infoSection.style.height = '40%';
+				container.style.height = '55%';
+				infoSection.style.height = '45%';
 				timeSection.style.margin = 'auto';
 			}
 		}	else if (infoSection.style.display === 'flex') {
@@ -174,8 +174,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			revealBtnIcon.innerHTML = iconUp;
 			revealBtn.appendChild(revealBtnIcon);
 			if (window.innerWidth < 500) {
-				container.style.height = '60%';
-				infoSection.style.height = '40%';
+				container.style.height = '55%';
+				infoSection.style.height = '45%';
 				timeSection.style.margin = 'auto';
 			}
 		}
