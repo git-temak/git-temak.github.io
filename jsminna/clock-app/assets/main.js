@@ -10,6 +10,8 @@ const infoSection = document.querySelector('.info');
 const infoLeft = document.querySelector('.left-half');
 const infoRight = document.querySelector('.right-half');
 const currentTime = new Date();
+const iconUp = '<span class="iconify" data-icon="bx:bx-chevron-up" data-inline="false"></span>';
+const iconDown = '<span class="iconify" data-icon="bx:bx-chevron-down" data-inline="false"></span>';
 
 //get browsers timezone in IANA format
 currentTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -78,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	reveal.innerText = 'more';
 	revealSection.appendChild(reveal);
 	const revealBtnIcon = document.createElement('span');
-	revealBtnIcon.innerHTML = `<span class="iconify" data-icon="bx:bx-chevron-down" data-inline="false"></span>`;
+	revealBtnIcon.innerHTML = iconDown;
 	reveal.appendChild(revealBtnIcon);
 
 	const refreshBtn = document.querySelector('.fa-refresh');
@@ -94,11 +96,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	const revealBtn = document.querySelector('.reveal');
 
 	const createInfoSection = () => {
-		container.style.height = '50%';
-		reveal.innerText = 'less';
-		revealBtnIcon.innerHTML = `<span class="iconify" data-icon="bx:bx-chevron-up" data-inline="false"></span>`;
-		reveal.appendChild(revealBtnIcon);
-		revealBtn.classList.add('less-btn');
+		revealBtn.innerText = 'less';
+		revealBtnIcon.innerHTML = iconUp;
+		revealBtn.appendChild(revealBtnIcon);
 
 		// create the elements in additional info section
 		infoTimezone = document.createElement('h3');
@@ -129,46 +129,38 @@ document.addEventListener('DOMContentLoaded', () => {
 		infoWeekNo.innerText = moment(currentTime).week();
 		infoRight.appendChild(infoWeekNo);
 
-		quoteSection.style.display = 'none';
-		infoSection.style.display = 'flex';
+		// afternoon/evening customisations
+		if (currentTime.getHours() >= 17) {
+			infoSection.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6))";
+			infoLeft.childNodes.forEach(element => element.style.color = 'white');
+			infoRight.childNodes.forEach(element => element.style.color = 'white');
+		} 
+	}
+
+	const hideInfoSection = () => {
+		container.style.height = '90%';
+		revealBtn.innerText = 'more';
+		revealBtnIcon.innerHTML = iconDown;
+		revealBtn.appendChild(revealBtnIcon);
 	}
 
 	revealBtn.onclick = () => {
-		if (infoSection.style.display == '') {
+		if (infoSection.style.display === '') {
+			container.style.height = '50%';
+			quoteSection.style.display = 'none';
+			infoSection.style.display = 'flex';
 			createInfoSection();
-
-			// afternoon/evening customisations
-			if (currentTime.getHours() >= 17) {
-				infoSection.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6))";
-				infoLeft.childNodes.forEach(element => element.style.color = 'white');
-				infoRight.childNodes.forEach(element => element.style.color = 'white');
-			} 
 		}	else if (infoSection.style.display === 'flex') {
-			const hideBtn = document.querySelector('.less-btn');
-			hideBtn.onclick = () => {
-				container.style.height = '90%';
-				// reveal.innerText = 'more';
-				// revealBtnIcon.innerHTML = `<span class="iconify" data-icon="bx:bx-chevron-down" data-inline="false"></span>`;
-				// reveal.appendChild(revealBtnIcon);
-				revealBtn.classList.remove('less-btn');
-				quoteSection.style.display = 'flex';
-				infoSection.style.display = 'none';
-			}
+			quoteSection.style.display = 'flex';
+			infoSection.style.display = 'none';
+			hideInfoSection();
+		}	else if (infoSection.style.display === 'none') {
+			container.style.height = '50%';
+			quoteSection.style.display = 'none';
+			infoSection.style.display = 'flex';
+			revealBtn.innerText = 'less';
+			revealBtnIcon.innerHTML = iconUp;
+			revealBtn.appendChild(revealBtnIcon);
 		}
 	}
-
-	// const hideButton = () => {
-	// 	const hideBtn = document.querySelector('.less-btn');
-	// 	hideBtn.onclick = () => {
-	// 		container.style.height = '90%';
-	// 		reveal.innerText = 'more';
-	// 		revealBtnIcon.innerHTML = `<span class="iconify" data-icon="bx:bx-chevron-down" data-inline="false"></span>`;
-	// 		reveal.appendChild(revealBtnIcon);
-	// 		revealBtn.classList.remove('less-btn');
-	// 		quoteSection.style.display = 'flex';
-	// 		infoSection.style.display = 'none';
-
-	// 		console.log(revealBtn);
-	// 	}
-	// }
 })
