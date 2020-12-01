@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			createInfoSection();
 			if (window.innerWidth < 500) {
 				container.style.height = '50%';
-				infoSection.style.height = '50%';
+				infoSection.style.height = '40%';
 				timeSection.style.margin = 'auto';
 			}
 		}	else if (infoSection.style.display === 'flex') {
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			revealBtn.appendChild(revealBtnIcon);
 			if (window.innerWidth < 500) {
 				container.style.height = '50%';
-				infoSection.style.height = '50%';
+				infoSection.style.height = '40%';
 				timeSection.style.margin = 'auto';
 			}
 		}
