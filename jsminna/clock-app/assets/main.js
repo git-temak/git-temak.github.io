@@ -1,10 +1,11 @@
+const main = document.getElementById('main');
+const container = document.querySelector('.container');
 const quoteSection = document.querySelector('.quotes');
 const greeting = document.querySelector('.greeting');
 const timeEl = document.querySelector('.cur-time');
 const timezoneEl = document.querySelector('.cur-timezone');
 const locationEl = document.querySelector('.location');
 const revealSection = document.querySelector('.reveal-section');
-const main = document.getElementById('main');
 const infoSection = document.querySelector('.info');
 const infoLeft = document.querySelector('.left-half');
 const infoRight = document.querySelector('.right-half');
@@ -91,7 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	const revealBtn = document.querySelector('.reveal');
-	revealBtn.onclick = () => {
+
+	const createInfoSection = () => {
+		container.style.height = '50%';
 		reveal.innerText = 'less';
 		revealBtnIcon.innerHTML = `<span class="iconify" data-icon="bx:bx-chevron-up" data-inline="false"></span>`;
 		reveal.appendChild(revealBtnIcon);
@@ -117,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		infoDOW.innerText = 'day of the week';
 		infoRight.appendChild(infoDOW);
 		infoDayofWeek = document.createElement('p');
-		infoDayofWeek.innerText = currentTime.toLocaleDateString('en-us', {weekday: 'long'});
+		infoDayofWeek.innerText = currentTime.getDay() + 1;
 		infoRight.appendChild(infoDayofWeek);
 		infoWkNo = document.createElement('h3');
 		infoWkNo.innerText = 'week number';
@@ -128,24 +131,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		quoteSection.style.display = 'none';
 		infoSection.style.display = 'flex';
-		hideButton();
+	}
 
-		// afternoon/evening customisations
-		if (currentTime.getHours() >= 17) {
-			infoSection.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6))";
-			infoLeft.childNodes.forEach(element => element.style.color = 'white');
+	revealBtn.onclick = () => {
+		if (infoSection.style.display == '') {
+			createInfoSection();
+
+			// afternoon/evening customisations
+			if (currentTime.getHours() >= 17) {
+				infoSection.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6))";
+				infoLeft.childNodes.forEach(element => element.style.color = 'white');
+				infoRight.childNodes.forEach(element => element.style.color = 'white');
+			} 
+		}	else if (infoSection.style.display === 'flex') {
+			const hideBtn = document.querySelector('.less-btn');
+			hideBtn.onclick = () => {
+				container.style.height = '90%';
+				// reveal.innerText = 'more';
+				// revealBtnIcon.innerHTML = `<span class="iconify" data-icon="bx:bx-chevron-down" data-inline="false"></span>`;
+				// reveal.appendChild(revealBtnIcon);
+				revealBtn.classList.remove('less-btn');
+				quoteSection.style.display = 'flex';
+				infoSection.style.display = 'none';
+			}
 		}
 	}
 
-	const hideButton = () => {
-		const hideBtn = document.querySelector('.less-btn');
-		hideBtn.onclick = () => {
-			reveal.innerText = 'more';
-			revealBtnIcon.innerHTML = `<span class="iconify" data-icon="bx:bx-chevron-down" data-inline="false"></span>`;
-			reveal.appendChild(revealBtnIcon);
-			// revealBtn.classList.remove('less-btn');
-			quoteSection.style.display = 'flex';
-			infoSection.style.display = 'none';
-		}
-	}
+	// const hideButton = () => {
+	// 	const hideBtn = document.querySelector('.less-btn');
+	// 	hideBtn.onclick = () => {
+	// 		container.style.height = '90%';
+	// 		reveal.innerText = 'more';
+	// 		revealBtnIcon.innerHTML = `<span class="iconify" data-icon="bx:bx-chevron-down" data-inline="false"></span>`;
+	// 		reveal.appendChild(revealBtnIcon);
+	// 		revealBtn.classList.remove('less-btn');
+	// 		quoteSection.style.display = 'flex';
+	// 		infoSection.style.display = 'none';
+
+	// 		console.log(revealBtn);
+	// 	}
+	// }
 })
