@@ -208,7 +208,7 @@ body {
 
 @media screen and (max-width: 500px) {
 	#main {
-		overflow-y: hidden;
+		height: 95vh;
 	}
 
 	.container {
@@ -220,7 +220,7 @@ body {
 	}
 
 	.reveal {
-		margin-top: 15%;
+		margin-top: 20%;
 	}
 
 	.quotes .fa-refresh {
