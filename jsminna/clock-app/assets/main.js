@@ -1,5 +1,6 @@
 const main = document.getElementById('main');
 const container = document.querySelector('.container');
+const timeSection = document.querySelector('.time-section');
 const quoteSection = document.querySelector('.quotes');
 const greeting = document.querySelector('.greeting');
 const timeEl = document.querySelector('.cur-time');
@@ -139,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const hideInfoSection = () => {
 		container.style.height = '90%';
-		container.style.transition = 'height 0.6s';
+		container.style.transition = 'height 0.5s linear';
 		revealBtn.innerText = 'more';
 		revealBtnIcon.innerHTML = iconDown;
 		revealBtn.appendChild(revealBtnIcon);
@@ -151,10 +152,20 @@ document.addEventListener('DOMContentLoaded', () => {
 			quoteSection.style.display = 'none';
 			infoSection.style.display = 'flex';
 			createInfoSection();
+			if (window.innerWidth < 500) {
+				container.style.height = '60%';
+				infoSection.style.height = '40%';
+				timeSection.style.margin = 'auto';
+			}
 		}	else if (infoSection.style.display === 'flex') {
 			quoteSection.style.display = 'flex';
 			infoSection.style.display = 'none';
 			hideInfoSection();
+			if (window.innerWidth < 500) {
+				container.style.height = '100%';
+			container.style.transition = 'height 0.45s linear';
+				timeSection.style.margin = 'unset';
+			}
 		}	else if (infoSection.style.display === 'none') {
 			container.style.height = '50%';
 			quoteSection.style.display = 'none';
@@ -162,6 +173,11 @@ document.addEventListener('DOMContentLoaded', () => {
 			revealBtn.innerText = 'less';
 			revealBtnIcon.innerHTML = iconUp;
 			revealBtn.appendChild(revealBtnIcon);
+			if (window.innerWidth < 500) {
+				container.style.height = '60%';
+				infoSection.style.height = '40%';
+				timeSection.style.margin = 'auto';
+			}
 		}
 	}
 })
