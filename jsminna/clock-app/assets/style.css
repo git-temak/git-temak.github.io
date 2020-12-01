@@ -131,6 +131,19 @@ body {
 	justify-content: space-between;
 	padding: 0 15%;
 	letter-spacing: 3px;
+	animation: slide-up 0.65s linear;
+}
+
+@keyframes slide-up {
+	0% {
+		opacity: 0;
+		height: 100%;
+	}
+	
+	100% {
+		opacity: 1;
+		height: 50%;
+	}
 }
 
 .info h3 {
@@ -161,6 +174,10 @@ body {
 
 /*responsiveness*/
 @media screen and (max-width: 800px) {
+	.container {
+		height: 100%;
+	}
+
 	.half-col {
 		width: 100%;
 	}
@@ -172,6 +189,20 @@ body {
 	.reveal {
 		margin-left: unset;
 		margin-top: 15%;
+	}
+
+	.info .right-half {
+		border-left: none;
+		padding-left: 0;
+	}
+
+	.info {
+		padding-top: 5%;
+		flex-direction: row;
+	}
+
+	.info p {
+		font-size: 2rem;
 	}
 }
 
@@ -190,5 +221,30 @@ body {
 
 	.quotes .fa-refresh {
 	    font-size: 24px;
+	}
+
+	.info {
+		flex-direction: column;
+		padding: 7%;
+		justify-content: center;
+	}
+
+	.info h3 {
+		font-size: 0.625rem;
+	}
+
+	.info p {
+		font-size: 1rem;
+	}
+
+	.left-half {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	.right-half {
+		display: grid;
+	    grid-template-columns: auto 7%;
 	}
 }
