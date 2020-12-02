@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		infoRight.appendChild(infoWeekNo);
 
 		// afternoon/evening customisations
-		if (currentTime.getHours() >= 17) {
+		if (currentTime.getHours() >= 17 || currentTime.getHours() < 6) {
 			infoSection.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6))";
 			infoLeft.childNodes.forEach(element => element.style.color = 'white');
 			infoRight.childNodes.forEach(element => element.style.color = 'white');
