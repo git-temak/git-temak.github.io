@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	quoteSection.appendChild(refresh);
 
 	//current browser time
-	timeEl.innerHTML = currentTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+	timeEl.innerHTML = currentTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12:false});
 	locationEl.innerText = `in ${timezoneLocation}, ${continent}`;
 	timezoneEl.innerText = moment().tz(currentTimezone).zoneAbbr();
 
@@ -66,6 +66,13 @@ document.addEventListener('DOMContentLoaded', () => {
 		greetingText.innerText = 'good afternoon, its currently';
 		if (window.innerWidth < 500) {
 			greetingText.innerText = 'good afternoon';
+		}
+	} if (currentTime.getHours() < 6) {
+		main.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/img/night-header.jpg')";
+		// greetingText.innerText = 'good evening, its currently';
+		icon.innerHTML = `<span class="iconify" data-icon="bi:moon"></span>`;
+		if (window.innerWidth < 500) {
+			// greetingText.innerText = 'good evening';
 		}
 	} if (currentTime.getHours() >= 17) {
 		main.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/img/night-header.jpg')";
@@ -131,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		infoRight.appendChild(infoWeekNo);
 
 		// afternoon/evening customisations
-		if (currentTime.getHours() >= 17) {
+		if (currentTime.getHours() >= 17 || currentTime.getHours() < 6) {
 			infoSection.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6))";
 			infoLeft.childNodes.forEach(element => element.style.color = 'white');
 			infoRight.childNodes.forEach(element => element.style.color = 'white');
