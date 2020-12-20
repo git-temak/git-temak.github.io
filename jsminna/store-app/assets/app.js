@@ -70,7 +70,12 @@ window.onload = () => {
 	  		});
 			console.log(result);
 		  })
-		  .catch(error => console.log('error', error));
+		  .catch(error => {
+		  	$('.success-message h4').removeClass('text-success');
+		  	$('.success-message h4').addClass('text-danger');
+		  	$('.success-message h4').innerText = error;
+		  	console.log('error', error)
+		  });
 	}
 
 	// login form
