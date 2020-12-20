@@ -1,0 +1,119 @@
+/** UNIVERSAL STYLING **/
+	*
+	{
+		margin: 0;
+		font-family: 'DM Sans', sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 1rem;
+	    box-sizing: border-box;
+	}
+
+	body
+	{
+		color: #141414;
+	}
+
+	:root
+	{
+		--primaryColor: #007bff;
+	}
+/** END UNIVERSAL STYLING **/
+
+/** ELEMENT WIDE STYLING **/
+	nav
+	{
+		background-color: #ebf0ff;
+		text-transform: uppercase;
+	}
+
+	.btn
+	{
+		padding: 15px 35px;
+		border-radius: 30px;
+		text-transform: uppercase;
+	}
+
+	.btn-primary:hover
+	{
+		background: transparent;
+		color: #007bff;
+		border-color: #007bff;
+	}
+/** END ELEMENT WIDE STYLING **/
+
+/** HEADER SECTION **/
+	header
+	{
+		background-image: url('./img/hero-bg-icons.png');
+		background-color: rgba(58, 111, 249, 0.1);
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: bottom;
+	}
+
+	header h1
+	{
+		font-size: 4rem;
+	}
+
+	header h2
+	{
+		font-size: 2.5rem;
+		margin: 30px 0;
+	}
+
+	header p
+	{
+		font-size: 1.25rem;
+	}
+
+	.nav-item
+	{
+		margin: auto 20px;
+	}
+
+	.nav-link:hover
+	{
+		color: var(--primaryColor) !important;
+	}
+
+	.hero .btn
+	{
+		margin-top: 40px;
+	}
+/** END HEADER SECTION **/
+
+/** CATEGORIES SECTION **/
+	.categories .card
+	{
+		filter: drop-shadow(5px 10px 20px rgba(164, 164, 164, 0.3));
+		border-radius: 10px;
+	}
+
+	.categories .card-img, .categories .card-img-top
+	{
+	    border-top-left-radius: 10px;
+	    border-top-right-radius: 10px;
+	}
+
+	.categories .card-body
+	{
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+	}
+/** END CATEGORIES SECTION **/
+
+/** FOOTER STYLING **/
+	footer
+	{
+		background-color: var(--primaryColor);
+	}
+/** END FOOTER STYLING **/
+
+/** Boostrap edits **/
+	@media (min-width: 1240px) {
+		.container, .container-lg, .container-md, .container-sm, .container-xl {
+		    max-width: 1240px;
+		}
+	}
