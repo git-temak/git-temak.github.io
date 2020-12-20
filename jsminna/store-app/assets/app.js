@@ -36,7 +36,7 @@ myHeaders.append("Content-Type", "application/json");
 // run when page has loaded
 window.onload = () => {
 	// Initialise AOS
-	if ( window.location.pathname === '/index.html' ){
+	if ( window.location.pathname === '/index.html' || window.location.pathname === '/'){
 		AOS.init({
 			duration: 1000
 	    });
