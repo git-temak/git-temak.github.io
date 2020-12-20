@@ -84,6 +84,23 @@
 	}
 /** END HEADER SECTION **/
 
+/** MODAL POPUP **/
+	.close span
+	{
+		font-size: 2rem;
+	}
+
+	.modal-content
+	{
+		border-radius: 20px;	
+	}
+
+	.modal-body form input, .modal-body form select
+	{
+		border-radius: 30px;
+	}
+/** END MODAL POPUP **/
+
 /** CATEGORIES SECTION **/
 	.categories .card
 	{
