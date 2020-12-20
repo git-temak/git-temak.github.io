@@ -69,11 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	} if (currentTime.getHours() < 6) {
 		main.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/img/night-header.jpg')";
-		// greetingText.innerText = 'good evening, its currently';
 		icon.innerHTML = `<span class="iconify" data-icon="bi:moon"></span>`;
-		if (window.innerWidth < 500) {
-			// greetingText.innerText = 'good evening';
-		}
 	} if (currentTime.getHours() >= 17) {
 		main.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/img/night-header.jpg')";
 		greetingText.innerText = 'good evening, its currently';
