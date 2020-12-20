@@ -7,6 +7,7 @@
 		font-weight: normal;
 		font-size: 1rem;
 	    box-sizing: border-box;
+	    scroll-behavior: smooth;
 	}
 
 	body
@@ -81,6 +82,21 @@
 	.nav-link:hover
 	{
 		color: var(--primaryColor) !important;
+	}
+
+	.navbar-collapse.show
+	{
+		text-align: center;
+	}
+
+	.navbar-collapse .form-inline
+	{
+	    justify-content: center;
+	}
+
+	.collapsing
+	{
+		transition: none;
 	}
 
 	.hero .btn
