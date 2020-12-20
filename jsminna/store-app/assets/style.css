@@ -40,6 +40,11 @@
 		color: #007bff;
 		border-color: #007bff;
 	}
+
+	.font-s16
+	{
+		font-size: 1rem;
+	}
 /** END ELEMENT WIDE STYLING **/
 
 /** HEADER SECTION **/
