@@ -36,107 +36,111 @@ myHeaders.append("Content-Type", "application/json");
 // run when page has loaded
 window.onload = () => {
 	// Initialise AOS
-	AOS.init({
-		duration: 1000
-    });
+	if ( window.location.pathname === '/index.html' ){
+		AOS.init({
+			duration: 1000
+	    });
 
-	// signup form - new user registration
-	signupForm.onsubmit = () => {
-		submit.innerHTML = `<i class="fa fa-spinner fa-spin mr-2"></i>Please Wait...`;
+		// signup form - new user registration
+		signupForm.onsubmit = () => {
+			submit.innerHTML = `<i class="fa fa-spinner fa-spin mr-2"></i>Please Wait...`;
 
-		let raw = JSON.stringify({
-			"fullName":fullname.value,
-			"email":emailAdd.value,
-			"mobileNumber":phoneNo.value,
-			"address":address.value,
-			"gender":gender.value,
-			"password":password.value
-		});
+			let raw = JSON.stringify({
+				"fullName":fullname.value,
+				"email":emailAdd.value,
+				"mobileNumber":phoneNo.value,
+				"address":address.value,
+				"gender":gender.value,
+				"password":password.value
+			});
 
-		const requestOptions = {
-			method: 'POST',
-			headers: myHeaders,
-			body: raw,
-			redirect: 'follow'
-		};
+			const requestOptions = {
+				method: 'POST',
+				headers: myHeaders,
+				body: raw,
+				redirect: 'follow'
+			};
 
-		fetch(storeSignup, requestOptions)
-		  .then(response => response.text())
-		  .then(result => {
-		  	signupForm.classList.add('d-none');
-		  	successMsg.classList.remove('d-none');
-	  	  	$('#signupModal').on('hidden.bs.modal', () => {
-	  	  		signupModal.reset();
-	  		});
-			console.log(result);
-		  })
-		  .catch(error => {
-		  	$('.success-message h4').removeClass('text-success');
-		  	$('.success-message h4').addClass('text-danger');
-		  	$('.success-message h4').innerText = error;
-		  	console.log('error', error)
-		  });
-	}
+			fetch(storeSignup, requestOptions)
+			  .then(response => response.text())
+			  .then(result => {
+			  	signupForm.classList.add('d-none');
+			  	successMsg.classList.remove('d-none');
+		  	  	$('#signupModal').on('hidden.bs.modal', () => {
+		  	  		signupModal.reset();
+		  		});
+				console.log(result);
+			  })
+			  .catch(error => {
+			  	$('.success-message h4').removeClass('text-success');
+			  	$('.success-message h4').addClass('text-danger');
+			  	$('.success-message h4').innerText = error;
+			  	console.log('error', error)
+			  });
+		}
 
-	// login form
-	loginForm.onsubmit = () => {
-		loginSubmit.innerHTML = `<i class="fa fa-spinner fa-spin mr-2"></i>Please Wait...`;
+		// login form
+		loginForm.onsubmit = () => {
+			loginSubmit.innerHTML = `<i class="fa fa-spinner fa-spin mr-2"></i>Please Wait...`;
 
-		let raw = JSON.stringify({
-			"email":loginEmailAdd.value,
-			"password":loginPassword.value
-		});
+			let raw = JSON.stringify({
+				"email":loginEmailAdd.value,
+				"password":loginPassword.value
+			});
 
-		const requestOptions = {
-			method: 'POST',
-			headers: myHeaders,
-			body: raw,
-			redirect: 'follow'
-		};
+			const requestOptions = {
+				method: 'POST',
+				headers: myHeaders,
+				body: raw,
+				redirect: 'follow'
+			};
 
-		fetch(storeLogin, requestOptions)
-		  .then(response => response.text())
-		  .then(result => {
-		  	loginForm.classList.add('d-none');
-		  	loginSuccessMsg.classList.remove('d-none');
-	  	  	$('#loginModal').on('hidden.bs.modal', () => {
-	  	  		loginForm.reset();
-	  		});
-			console.log(result);
-		  })
-		  .catch(error => {
-		  	$('.login-success-message h4').removeClass('text-success');
-		  	$('.login-success-message h4').addClass('text-danger');
-		  	$('.login-success-message h4').innerText = error;
-		  	console.log('error', error)
-		  });
+			fetch(storeLogin, requestOptions)
+			  .then(response => response.text())
+			  .then(result => {
+			  	loginForm.classList.add('d-none');
+			  	loginSuccessMsg.classList.remove('d-none');
+		  	  	$('#loginModal').on('hidden.bs.modal', () => {
+		  	  		loginForm.reset();
+		  		});
+				console.log(result);
+			  })
+			  .catch(error => {
+			  	$('.login-success-message h4').removeClass('text-success');
+			  	$('.login-success-message h4').addClass('text-danger');
+			  	$('.login-success-message h4').innerText = error;
+			  	console.log('error', error)
+			  });
+		}
 	}
 	
-	// suggest form
-	suggestForm.onsubmit = () => {
-		suggestSubmit.innerHTML = `<i class="fa fa-spinner fa-spin mr-2"></i>Please Wait...`;
+	if (window.location.pathname === '/suggest.html' ){
+		// suggest form
+		suggestForm.onsubmit = () => {
+			suggestSubmit.innerHTML = `<i class="fa fa-spinner fa-spin mr-2"></i>Please Wait...`;
 
-		let raw = JSON.stringify({
-			"itemName":itemName.value,
-			"itemDescription":itemDescription.value,
-			"itemCategory":category.value,
-			"reason":reason.value
-		});
+			let raw = JSON.stringify({
+				"itemName":itemName.value,
+				"itemDescription":itemDescription.value,
+				"itemCategory":category.value,
+				"reason":reason.value
+			});
 
-		const requestOptions = {
-			method: 'POST',
-			headers: myHeaders,
-			body: raw,
-			redirect: 'follow'
-		};
+			const requestOptions = {
+				method: 'POST',
+				headers: myHeaders,
+				body: raw,
+				redirect: 'follow'
+			};
 
-		fetch(storeSuggest, requestOptions)
-		  .then(response => response.text())
-		  .then(result => {
-		  	alert("Thank you!Your suggestion has been recorded successfully.")
-  	  		loginForm.reset();
-			console.log(result);
-		  })
-		  .catch(error => console.log('error', error));
+			fetch(storeSuggest, requestOptions)
+			  .then(response => response.text())
+			  .then(result => {
+			  	alert("Thank you!Your suggestion has been recorded successfully.")
+	  	  		loginForm.reset();
+				console.log(result);
+			  })
+			  .catch(error => console.log('error', error));
+		}
 	}
 }
