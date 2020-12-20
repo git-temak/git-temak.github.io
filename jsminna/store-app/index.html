@@ -46,7 +46,7 @@
 				</ul>
 				<form class="form-inline">
 					<button class="btn btn-outline-primary" data-toggle="modal" data-target="#">login</button>
-					<button class="btn btn-primary ml-3" data-toggle="modal" data-target="#signupModal">register</button>
+					<button class="btn btn-primary ml-3" data-toggle="modal" data-target="#signupModal">Sign up</button>
 				</form>
 			</div>
 		</nav>
@@ -64,7 +64,7 @@
 					        </button>
 						</div>
 						<div class="modal-body pt-4">
-							<form class="px-4">
+							<form id="signup-form" class="px-4">
 								<div class="form-row">
 									<div class="col-12 mb-3">
 										<input type="text" class="form-control" id="fullname" placeholder="Full Name">
@@ -79,13 +79,11 @@
 										<input type="text" class="form-control" id="address" placeholder="Address">
 									</div>
 									<div class="col-md-6">
-										<select class="custom-select dropdown-toggle" id="gender" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											<div class="dropdown-menu" aria-labelledby="gender">
-											    <option selected>Gender</option>
-											    <option value="Male" class="dropdown-item">Male</option>
-											    <option value="Female" class="dropdown-item">Female</option>
-											    <option value="Rather not say" class="dropdown-item">Rather not say</option>
-											</div>
+										<select class="custom-select" id="gender">
+										    <option selected>Gender</option>
+										    <option value="Male" class="dropdown-item">Male</option>
+										    <option value="Female" class="dropdown-item">Female</option>
+										    <option value="Rather not say" class="dropdown-item">Rather not say</option>
 										</select>
 										  <!-- <button class="form-control dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gender</button>
 										  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
