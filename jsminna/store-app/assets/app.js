@@ -14,13 +14,20 @@ const password = document.getElementById('password');
 const loginPassword = document.getElementById('login-password');
 const submit = document.getElementById('form-submit');
 const loginSubmit = document.getElementById('login-submit');
+const suggestSubmit = document.getElementById('suggest-submit');
 const loaderIcon = document.querySelector(".fa-spin");
 const successMsg = document.querySelector(".success-message");
 const loginSuccessMsg = document.querySelector(".login-success-message");
+const suggestForm = document.getElementById('suggest-form');
+const itemName = document.getElementById('itemname');
+const itemDescription = document.getElementById('itemdescription');
+const category = document.getElementById('category');
+const reason = document.getElementById('reason');
 
 // store url paths
 const storeSignup = "https://jsminnastore.herokuapp.com/auth/signup";
 const storeLogin = "https://jsminnastore.herokuapp.com/auth/login/";
+const storeSuggest = "https://jsminnastore.herokuapp.com/suggest";
 
 const myHeaders = new Headers();
 myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsTmFtZSI6ImhhcnJ5cG9ydGVyIDUiLCJpYXQiOjE2MDY0Nzk0MDUsImV4cCI6MTYwNjQ4MzAwNX0.V8j3bCZEMFiTa4yhpHdYP8uIesEU5ty6YzxNau2TKtE");
@@ -92,7 +99,39 @@ window.onload = () => {
 	  		});
 			console.log(result);
 		  })
+		  .catch(error => {
+		  	$('.login-success-message h4').removeClass('text-success');
+		  	$('.login-success-message h4').addClass('text-danger');
+		  	$('.login-success-message h4').innerText = error;
+		  	console.log('error', error)
+		  });
+	}
+	
+	// suggest form
+	suggestForm.onsubmit = () => {
+		suggestSubmit.innerHTML = `<i class="fa fa-spinner fa-spin mr-2"></i>Please Wait...`;
+
+		let raw = JSON.stringify({
+			"itemName":itemName.value,
+			"itemDescription":itemDescription.value,
+			"itemCategory":category.value,
+			"reason":reason.value
+		});
+
+		const requestOptions = {
+			method: 'POST',
+			headers: myHeaders,
+			body: raw,
+			redirect: 'follow'
+		};
+
+		fetch(storeSuggest, requestOptions)
+		  .then(response => response.text())
+		  .then(result => {
+		  	alert("Thank you!Your suggestion has been recorded successfully.")
+  	  		loginForm.reset();
+			console.log(result);
+		  })
 		  .catch(error => console.log('error', error));
 	}
-	  	
 }
