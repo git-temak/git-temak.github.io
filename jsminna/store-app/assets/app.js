@@ -36,10 +36,7 @@ myHeaders.append("Content-Type", "application/json");
 // run when page has loaded
 window.onload = () => {
 	// Initialise AOS
-	if ( window.location.pathname === '/index.html' || window.location.pathname === '/'){
-		AOS.init({
-			duration: 1000
-	    });
+	// if ( window.location.pathname === '/index.html' || window.location.pathname === '/'){
 
 		// signup form - new user registration
 		signupForm.onsubmit = () => {
@@ -75,7 +72,8 @@ window.onload = () => {
 			  	$('.success-message h4').removeClass('text-success');
 			  	$('.success-message h4').addClass('text-danger');
 			  	$('.success-message h4').innerText = error;
-			  	console.log('error', error)
+			  	alert(error);
+			  	console.log('error', error);
 			  });
 		}
 
@@ -109,12 +107,13 @@ window.onload = () => {
 			  	$('.login-success-message h4').removeClass('text-success');
 			  	$('.login-success-message h4').addClass('text-danger');
 			  	$('.login-success-message h4').innerText = error;
+			  	alert(error);
 			  	console.log('error', error)
 			  });
 		}
-	}
+	// }
 	
-	if (window.location.pathname === '/suggest.html' ){
+	// if (window.location.pathname === '/suggest.html' ){
 		// suggest form
 		suggestForm.onsubmit = () => {
 			suggestSubmit.innerHTML = `<i class="fa fa-spinner fa-spin mr-2"></i>Please Wait...`;
@@ -125,6 +124,8 @@ window.onload = () => {
 				"itemCategory":category.value,
 				"reason":reason.value
 			});
+
+			console.log(raw)
 
 			const requestOptions = {
 				method: 'POST',
@@ -140,7 +141,10 @@ window.onload = () => {
 	  	  		loginForm.reset();
 				console.log(result);
 			  })
-			  .catch(error => console.log('error', error));
+			  .catch(error => {
+			  	alert(error);
+			  	console.log('error', error)
+			  });
 		}
-	}
+	// }
 }
