@@ -44,10 +44,10 @@
 						<a class="nav-link" href="#">Contact</a>
 					</li>
 				</ul>
-				<div class="form-inline mt-3 mt-lg-0">
-					<button class="btn btn-outline-primary" data-toggle="modal" data-target="#loginModal">login</button>
-					<button class="btn btn-primary ml-3" data-toggle="modal" data-target="#signupModal">Sign up</button>
-				</div>
+				<form class="form-inline mt-3 mt-lg-0">
+					<button class="btn btn-outline-primary" type="button" data-toggle="modal" data-target="#loginModal">login</button>
+					<button class="btn btn-primary ml-3" type="button" data-toggle="modal" data-target="#signupModal">Sign up</button>
+				</form>
 			</div>
 		</nav>
 		<!-- END NAVIGATION AREA -->
@@ -85,12 +85,6 @@
 										    <option value="Female">Female</option>
 										    <option value="Rather not say">Rather not say</option>
 										</select>
-										  <!-- <button class="form-control dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gender</button>
-										  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-										    <a class="dropdown-item" href="#">Action</a>
-										    <a class="dropdown-item" href="#">Another action</a>
-										    <a class="dropdown-item" href="#">Something else here</a>
-										  </div> -->
 									</div>
 									<div class="col-md-6">
 										<input type="password" class="form-control" id="password" placeholder="Password" required>
@@ -99,7 +93,7 @@
 								<button type="submit" id="form-submit" class="btn btn-primary w-100 p-2 mt-4 text-capitalize">Sign up</button>
 							</form>
 							<div class="success-message text-center d-none">
-								<h4 class="text-success my-3">You have registered successfully!</h4>
+								<h4 class="my-3"></h4>
 								<p class="font-s16">Kindly <a data-dismiss="modal" data-toggle="modal" href="#loginModal">login</a> to proceed</p>
 							</div>
 						</div>
@@ -130,7 +124,7 @@
 								<button type="submit" id="login-submit" class="btn btn-primary w-100 p-2 mt-4 text-capitalize">Login</button>
 							</form>
 							<div class="login-success-message text-center d-none">
-								<h4 class="text-success my-3">Login successful!</h4>
+								<h4 class="login-text-success my-3"></h4>
 								<p class="font-s16">Feel free to <a href="suggest.html">leave a suggestion.</a></p>
 							</div>
 						</div>
