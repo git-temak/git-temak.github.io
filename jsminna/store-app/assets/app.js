@@ -34,6 +34,9 @@ const storeSignup = "https://jsminnastore.herokuapp.com/auth/signup";
 const storeLogin = "https://jsminnastore.herokuapp.com/auth/login/";
 const storeSuggest = "https://jsminnastore.herokuapp.com/suggest";
 const storeSuggested = "https://jsminnastore.herokuapp.com/suggested";
+const storeElectronics = "https://jsminnastore.herokuapp.com/suggested/electronics";
+const storeFurniture = "https://jsminnastore.herokuapp.com/suggested/furniture";
+const storeGrocery = "https://jsminnastore.herokuapp.com/suggested/grocery";
 
 const myHeaders = new Headers();
 myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsTmFtZSI6ImhhcnJ5cG9ydGVyIDUiLCJpYXQiOjE2MDY0Nzk0MDUsImV4cCI6MTYwNjQ4MzAwNX0.V8j3bCZEMFiTa4yhpHdYP8uIesEU5ty6YzxNau2TKtE");
@@ -135,6 +138,7 @@ window.onload = () => {
 		    });
 	}
 	
+	// fire on the suggest page
 	if (window.location.href.search(/\bsuggest\b/i) > -1){
 		// suggest form
 		suggestForm.onsubmit = (e) => {
@@ -182,7 +186,8 @@ window.onload = () => {
 		}
 	}
 
-	if (window.location.href.search(/\bsuggested\b/i) > -1){
+	// fire on the suggestions list page
+	if (window.location.href.search(/\bsuggested.html\b/i) > -1){
 		//get the api key from session storage to be used for suggestion form validation
 		const apiKey = sessionStorage.getItem("User API Key");
 
@@ -190,6 +195,8 @@ window.onload = () => {
 		if (!apiKey) {
 			$('.page-message').html('<p class="mt-5 text-center text-danger">You do not have authorization to view the content of this page.</p><p class="font-italic text-center font-s16"><span class="font-weight-bold">Please note: </span>You need to <a data-toggle="modal" data-target="#loginModal" href>Login</a> or <a data-toggle="modal" data-target="#signupModal" href>Sign up</a> to use this feature. Then refresh this page to try again.</p>');
 		} else {
+			spinner.removeAttribute('hidden');
+			
 			const suggestHeaders = new Headers();
 			suggestHeaders.append("Authorization", "Bearer " + apiKey);
 			suggestHeaders.append("Content-Type", "application/json");
@@ -206,8 +213,8 @@ window.onload = () => {
 					if (!$.isEmptyObject(JSON.parse(result).error)) {
 					  	$('.page-message').html(`<p class="text-danger text-center">${JSON.parse(result).error.name}: ${JSON.parse(result).error.message}</p>
 					  		<p class="font-italic text-center font-s16">Kindly <a data-toggle="modal" data-target="#loginModal" href>Login</a> or <a data-toggle="modal" data-target="#signupModal" href>Sign up</a> again to use this feature.</p>`);
+						spinner.setAttribute('hidden', '')
 					} else {
-						spinner.removeAttribute('hidden');
 						search.removeAttribute('hidden');
 
 						JSON.parse(result).payload.result.forEach(entry => {
@@ -219,7 +226,13 @@ window.onload = () => {
 
 						cell1.innerHTML = entry.itemName
 						cell2.innerHTML = entry.itemDescription;
-						cell3.innerHTML = entry.itemCategory;
+						if (entry.itemCategory === 'electronics') {
+							cell3.innerHTML = `<a href="suggested/electronics.html">${entry.itemCategory}</a>`;
+						} else if (entry.itemCategory === 'furniture') {
+							cell3.innerHTML = `<a href="suggested/furniture.html">${entry.itemCategory}</a>`;
+						} else if (entry.itemCategory === 'grocery') {
+							cell3.innerHTML = `<a href="suggested/grocery.html">${entry.itemCategory}</a>`;
+						}
 						cell4.innerHTML = entry.reason;
 
 						setTimeout(() => {
@@ -229,26 +242,239 @@ window.onload = () => {
 						});
 					}
 				})
-				.catch(error => console.log('error', error))
+				.catch(error => alert('error', error))
 		}
 
-		// const searchCountry = () => {
-		// 	filter = search.value.toUpperCase();
-		// 	tr = tableBody.getElementsByTagName("tr");
+		const searchItems = () => {
+			filter = search.value.toUpperCase();
+			tr = tableBody.getElementsByTagName("tr");
 
-		// 	for (i = 0; i < tr.length; i++) {
-		// 	    td = tr[i].getElementsByTagName("td")[1];
-		// 	    if (td) {
-		// 			txtValue = td.textContent || td.innerText;
-		// 			if (txtValue.toUpperCase().indexOf(filter) > -1) {
-		// 				tr[i].style.display = "";
-		// 			} else {
-		// 				tr[i].style.display = "none";
-		// 			}
-		// 	    }
-		// 	}
-		// }
+			for (i = 0; i < tr.length; i++) {
+			    td = tr[i].getElementsByTagName("td")[0];
+			    if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+			    }
+			}
+		}
 
-		// search.onkeyup = searchCountry;
+		search.onkeyup = searchItems;
+	}
+
+	// fire on the electronics list page
+	if (window.location.href.search(/\belectronics\b/i) > -1){
+		//get the api key from session storage to be used for suggestion form validation
+		const apiKey = sessionStorage.getItem("User API Key");
+
+		//check if api key is set
+		if (!apiKey) {
+			$('.page-message').html('<p class="mt-5 text-center text-danger">You do not have authorization to view the content of this page.</p><p class="font-italic text-center font-s16"><span class="font-weight-bold">Please note: </span>You need to <a data-toggle="modal" data-target="#loginModal" href>Login</a> or <a data-toggle="modal" data-target="#signupModal" href>Sign up</a> to use this feature. Then refresh this page to try again.</p>');
+		} else {
+			spinner.removeAttribute('hidden');
+			
+			const suggestHeaders = new Headers();
+			suggestHeaders.append("Authorization", "Bearer " + apiKey);
+			suggestHeaders.append("Content-Type", "application/json");
+
+			const requestOptions = {
+				method: 'GET',
+				headers: suggestHeaders,
+				redirect: 'follow'
+			};
+
+			fetch(storeElectronics, requestOptions)
+				.then(response => response.text())
+				.then(result => {
+					if (!$.isEmptyObject(JSON.parse(result).error)) {
+					  	$('.page-message').html(`<p class="text-danger text-center">${JSON.parse(result).error.name}: ${JSON.parse(result).error.message}</p>
+					  		<p class="font-italic text-center font-s16">Kindly <a data-toggle="modal" data-target="#loginModal" href>Login</a> or <a data-toggle="modal" data-target="#signupModal" href>Sign up</a> again to use this feature.</p>`);
+						spinner.setAttribute('hidden', '')
+					} else {
+						search.removeAttribute('hidden');
+
+						JSON.parse(result).payload.result.forEach(entry => {
+						const row = tableBody.insertRow(0);
+						const cell1 = row.insertCell(0);
+						const cell2 = row.insertCell(1);
+						const cell3 = row.insertCell(2);
+
+						cell1.innerHTML = entry.itemName
+						cell2.innerHTML = entry.itemDescription;
+						cell3.innerHTML = entry.reason;
+
+						setTimeout(() => {
+							spinner.setAttribute('hidden', '')
+							table.removeAttribute('hidden', '')
+						}, 1000);
+						});
+					}
+				})
+				.catch(error => alert('error', error))
+		}
+
+		const searchItems = () => {
+			filter = search.value.toUpperCase();
+			tr = tableBody.getElementsByTagName("tr");
+
+			for (i = 0; i < tr.length; i++) {
+			    td = tr[i].getElementsByTagName("td")[0];
+			    if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+			    }
+			}
+		}
+
+		search.onkeyup = searchItems;
+	}
+
+	// fire on the furniture list page
+	if (window.location.href.search(/\bfurniture\b/i) > -1){
+		//get the api key from session storage to be used for suggestion form validation
+		const apiKey = sessionStorage.getItem("User API Key");
+
+		//check if api key is set
+		if (!apiKey) {
+			$('.page-message').html('<p class="mt-5 text-center text-danger">You do not have authorization to view the content of this page.</p><p class="font-italic text-center font-s16"><span class="font-weight-bold">Please note: </span>You need to <a data-toggle="modal" data-target="#loginModal" href>Login</a> or <a data-toggle="modal" data-target="#signupModal" href>Sign up</a> to use this feature. Then refresh this page to try again.</p>');
+		} else {
+			spinner.removeAttribute('hidden');
+			
+			const suggestHeaders = new Headers();
+			suggestHeaders.append("Authorization", "Bearer " + apiKey);
+			suggestHeaders.append("Content-Type", "application/json");
+
+			const requestOptions = {
+				method: 'GET',
+				headers: suggestHeaders,
+				redirect: 'follow'
+			};
+
+			fetch(storeFurniture, requestOptions)
+				.then(response => response.text())
+				.then(result => {
+					if (!$.isEmptyObject(JSON.parse(result).error)) {
+					  	$('.page-message').html(`<p class="text-danger text-center">${JSON.parse(result).error.name}: ${JSON.parse(result).error.message}</p>
+					  		<p class="font-italic text-center font-s16">Kindly <a data-toggle="modal" data-target="#loginModal" href>Login</a> or <a data-toggle="modal" data-target="#signupModal" href>Sign up</a> again to use this feature.</p>`);
+						spinner.setAttribute('hidden', '')
+					} else {
+						search.removeAttribute('hidden');
+
+						JSON.parse(result).payload.result.forEach(entry => {
+						const row = tableBody.insertRow(0);
+						const cell1 = row.insertCell(0);
+						const cell2 = row.insertCell(1);
+						const cell3 = row.insertCell(2);
+
+						cell1.innerHTML = entry.itemName
+						cell2.innerHTML = entry.itemDescription;
+						cell3.innerHTML = entry.reason;
+
+						setTimeout(() => {
+							spinner.setAttribute('hidden', '')
+							table.removeAttribute('hidden', '')
+						}, 1000);
+						});
+					}
+				})
+				.catch(error => alert('error', error))
+		}
+
+		const searchItems = () => {
+			filter = search.value.toUpperCase();
+			tr = tableBody.getElementsByTagName("tr");
+
+			for (i = 0; i < tr.length; i++) {
+			    td = tr[i].getElementsByTagName("td")[0];
+			    if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+			    }
+			}
+		}
+
+		search.onkeyup = searchItems;
+	}
+
+	// fire on the grocery list page
+	if (window.location.href.search(/\bgrocery\b/i) > -1){
+		//get the api key from session storage to be used for suggestion form validation
+		const apiKey = sessionStorage.getItem("User API Key");
+
+		//check if api key is set
+		if (!apiKey) {
+			$('.page-message').html('<p class="mt-5 text-center text-danger">You do not have authorization to view the content of this page.</p><p class="font-italic text-center font-s16"><span class="font-weight-bold">Please note: </span>You need to <a data-toggle="modal" data-target="#loginModal" href>Login</a> or <a data-toggle="modal" data-target="#signupModal" href>Sign up</a> to use this feature. Then refresh this page to try again.</p>');
+		} else {
+			spinner.removeAttribute('hidden');
+			
+			const suggestHeaders = new Headers();
+			suggestHeaders.append("Authorization", "Bearer " + apiKey);
+			suggestHeaders.append("Content-Type", "application/json");
+
+			const requestOptions = {
+				method: 'GET',
+				headers: suggestHeaders,
+				redirect: 'follow'
+			};
+
+			fetch(storeGrocery, requestOptions)
+				.then(response => response.text())
+				.then(result => {
+					if (!$.isEmptyObject(JSON.parse(result).error)) {
+					  	$('.page-message').html(`<p class="text-danger text-center">${JSON.parse(result).error.name}: ${JSON.parse(result).error.message}</p>
+					  		<p class="font-italic text-center font-s16">Kindly <a data-toggle="modal" data-target="#loginModal" href>Login</a> or <a data-toggle="modal" data-target="#signupModal" href>Sign up</a> again to use this feature.</p>`);
+						spinner.setAttribute('hidden', '')
+					} else {
+						search.removeAttribute('hidden');
+
+						JSON.parse(result).payload.result.forEach(entry => {
+						const row = tableBody.insertRow(0);
+						const cell1 = row.insertCell(0);
+						const cell2 = row.insertCell(1);
+						const cell3 = row.insertCell(2);
+
+						cell1.innerHTML = entry.itemName
+						cell2.innerHTML = entry.itemDescription;
+						cell3.innerHTML = entry.reason;
+
+						setTimeout(() => {
+							spinner.setAttribute('hidden', '')
+							table.removeAttribute('hidden', '')
+						}, 1000);
+						});
+					}
+				})
+				.catch(error => alert('error', error))
+		}
+
+		const searchItems = () => {
+			filter = search.value.toUpperCase();
+			tr = tableBody.getElementsByTagName("tr");
+
+			for (i = 0; i < tr.length; i++) {
+			    td = tr[i].getElementsByTagName("td")[0];
+			    if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+			    }
+			}
+		}
+
+		search.onkeyup = searchItems;
 	}
 }
