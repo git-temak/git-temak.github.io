@@ -73,6 +73,8 @@ window.onload = () => {
 		  	  		signupForm.classList.remove('d-none');
 				  	successMsg.classList.add('d-none');
 					submit.innerText = 'Sign up';
+				  	apiKey = JSON.parse(result).payload.token;
+				  	console.log("signup", apiKey);
 		  		});
 			  }
 			console.log(result);
@@ -106,17 +108,24 @@ window.onload = () => {
 		fetch(storeLogin, requestOptions)
 		  .then(response => response.text())
 		  .then(result => {
-		  	loginForm.classList.add('d-none');
-		  	loginSuccessMsg.classList.remove('d-none');
-  	  		loginForm.reset();
 			console.log(result);
 			if (JSON.parse(result).success == false) {
-			  	$('.login-text-success').addClass('text-danger');
-			  	$('.login-success-message p').hide();
-			  	$('.login-text-success').text(JSON.parse(result).message);
+			  	// $('.login-text-success').addClass('text-danger');
+			  	// $('.login-success-message p').hide();
+			  	// $('.login-text-success').text(JSON.parse(result).message);
+			  	alert(JSON.parse(result).message);
 			} else {
+				loginForm.classList.add('d-none');
+			  	loginSuccessMsg.classList.remove('d-none');
+	  	  		loginForm.reset();
 			  	$('.login-text-success').text('Login Successful!');
 			  	$('.login-text-success').addClass('text-success');
+			  	//set the api key from login to session
+			  	sessionStorage.setItem("API Key", JSON.parse(result).payload.token);
+			  	if (window.location.href.indexOf("suggest") > -1){
+				  	$('.login-success-message p').hide();
+				  	setTimeout(() => {$('#loginModal').modal('hide')}, 1200);
+			  	}
 			}
 		  })
 		  .catch(error => {
@@ -126,38 +135,51 @@ window.onload = () => {
 		  });
 	}
 	
-	// if (window.location.pathname === '/suggest.html' ){
+	if (window.location.href.indexOf("suggest") > -1){
 		// suggest form
-		// suggestForm.onsubmit = () => {
-		// 	suggestSubmit.innerHTML = `<i class="fa fa-spinner fa-spin mr-2"></i>Please Wait...`;
+		suggestForm.onsubmit = (e) => {
+			e.preventDefault();
+			suggestSubmit.innerHTML = `<i class="fa fa-spinner fa-spin mr-2"></i>Please Wait...`;
+		  	//set the api key from session storage to be used for suggestion
+			const apiKey = sessionStorage.getItem("API Key");
 
-		// 	let raw = JSON.stringify({
-		// 		"itemName":itemName.value,
-		// 		"itemDescription":itemDescription.value,
-		// 		"itemCategory":category.value,
-		// 		"reason":reason.value
-		// 	});
+			const suggestHeaders = new Headers();
+			suggestHeaders.append("Authorization", "Bearer " + apiKey);
+			suggestHeaders.append("Content-Type", "application/json");
 
-		// 	console.log(raw)
+			let raw = JSON.stringify({
+				"itemName":itemName.value,
+				"itemDescription":itemDescription.value,
+				"itemCategory":category.value,
+				"reason":reason.value
+			});
 
-		// 	const requestOptions = {
-		// 		method: 'POST',
-		// 		headers: myHeaders,
-		// 		body: raw,
-		// 		redirect: 'follow'
-		// 	};
+			const requestOptions = {
+				method: 'POST',
+				headers: suggestHeaders,
+				body: raw,
+				redirect: 'follow'
+			};
 
-		// 	fetch(storeSuggest, requestOptions)
-		// 	  .then(response => response.text())
-		// 	  .then(result => {
-		// 	  	alert("Thank you!Your suggestion has been recorded successfully.")
-	 //  	  		loginForm.reset();
-		// 		console.log(result);
-		// 	  })
-		// 	  .catch(error => {
-		// 	  	alert(error);
-		// 	  	console.log('error', error)
-		// 	  });
-		// }
-	// }
+			fetch(storeSuggest, requestOptions)
+			  .then(response => response.text())
+			  .then(result => {
+				console.log(result);
+				if (!$.isEmptyObject(JSON.parse(result).error)) {
+				  	$('.suggest-body').html(`<p class="text-danger">${JSON.parse(result).error.name}: ${JSON.parse(result).error.message}</p>`);
+				} else if (JSON.parse(result).success == false) {
+				  	alert(JSON.parse(result).message);
+					suggestSubmit.innerText = 'Submit suggestion';
+				} else {
+		  	  		suggestForm.reset();
+				  	$('.suggest-body').html('<p class="text-success">Thank you! Your suggestion has been recorded successfully.</p>');
+				  	setTimeout(() => {$('.suggest-body').html(suggestForm)}, 1500);
+					suggestSubmit.innerText = 'Submit suggestion';
+				}
+			  })
+			  .catch(error => {
+			  	console.log('error', error)
+			  });
+		}
+	}
 }

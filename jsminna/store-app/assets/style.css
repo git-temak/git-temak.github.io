@@ -162,6 +162,10 @@
 		}
 	}
 
+	.navbar-light .navbar-nav .active>.nav-link {
+		color: var(--primaryColor);
+	}
+
 /** Responsive edits **/
 	@media (max-width: 500px) {
 		header h1
