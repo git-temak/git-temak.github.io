@@ -150,6 +150,11 @@
 		border-bottom-left-radius: 10px;
 		border-bottom-right-radius: 10px;
 	}
+
+	.categories a:hover
+	{
+		text-decoration: none;
+	}
 /** END CATEGORIES SECTION **/
 
 /** SUGGESTIONS PAGE **/
@@ -168,13 +173,14 @@
 
 	#spinner:not([hidden]) {
 	  position: fixed;
-	  top: 0;
+	  top: 200px;
 	  left: 0;
 	  right: 0;
 	  bottom: 0;
 	  display: flex;
 	  justify-content: center;
 	  align-items: center;
+	  z-index: 10;
 	}
 
 	#spinner::after {
@@ -228,13 +234,7 @@
         margin-top: 0;
     }
 
-   /* @media (min-width: 992px) {
-    	.dropdown-menu{
-    		display: block;
-    	}
-    }*/
-
-/** Responsive edits *
+/** Responsive edits **/
 	@media (max-width: 500px) {
 		header h1
 		{

@@ -5,18 +5,16 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Favicon -->
-	<link rel="icon" href="./assets/img/TSD-logo.png" type="image/png">
+	<link rel="icon" href="../assets/img/TSD-logo.png" type="image/png">
 	<!-- Font to be used -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-	<!-- Animate on Scroll CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- FONT AWESOME -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
 	<!-- BOOTSTRAP V4 -->
-	<link rel="stylesheet" type="text/css" href="./assets/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../assets/bootstrap.min.css">
 	<!-- CSS FILE -->
-	<link rel="stylesheet" type="text/css" href="./assets/style.css">
+	<link rel="stylesheet" type="text/css" href="../assets/style.css">
 </head>
 <body>
 	<!-- HEADER AREA -->
@@ -24,23 +22,23 @@
 		<div class="container">
 		<!-- NAVIGATION AREA -->
 		<nav class="navbar navbar-expand-lg navbar-light px-0 py-4 pb-0">
-			<a class="navbar-brand" href="index.html"><img src="./assets/img/TSD-logo.svg"></a>
+			<a class="navbar-brand" href="../index.html"><img src="../assets/img/TSD-logo.svg"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 			</button>
 
 			<div class="collapse navbar-collapse" id="navMenu">
 				<ul class="navbar-nav mx-auto">
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="suggested.html" id="navbarDropdown" role="button" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">Suggestions</a>
+					<li class="nav-item active dropdown">
+						<a class="nav-link dropdown-toggle" href="../suggested.html" id="navbarDropdown" role="button" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">Suggestions</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">Electronics</a>
-							<a class="dropdown-item" href="#">Furniture</a>
-							<a class="dropdown-item" href="#">Grocery</a>
+							<a class="dropdown-item" href="electronics.html">Electronics</a>
+							<a class="dropdown-item active" href="#"><span class="sr-only">(current)</span>Furniture</a>
+							<a class="dropdown-item" href="grocery.html">Grocery</a>
 				        </div>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="suggest.html">suggest</a>
+						<a class="nav-link" href="../suggest.html">suggest</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#">about us</a>
@@ -139,13 +137,8 @@
 
 		<!-- HERO SECRION -->
 		<section class="container hero py-5">
-			<div class="row py-lg-5 mb-lg-5">
-				<div class="col-12 text-center">
-					<h1 class="font-weight-bold" data-aos="fade-up">The Shopping District</h1>
-					<h2 data-aos="fade-up" data-aos-delay="200">We are dedicated to serving you!</h2>
-					<p data-aos="fade-up" data-aos-delay="400">We would love to hear what you would like to see on our store<br> so that we can serve you better.</p>
-					<a href="suggest.html" data-aos="fade-up" data-aos-delay="800"><button class="btn btn-primary">suggest an item</button></a>
-				</div>
+			<div class="text-center pb-5">
+				<h2>View all Furniture Suggestions</h2>
 			</div>
 		</section>
 		<!-- END HERO SECRION -->
@@ -153,46 +146,30 @@
 	</header>
 	<!-- END HEADER AREA -->
 
-	<!-- MAIN BODY -->
-	<section class="container categories pt-5">
-		<h2 class="text-center">Categories</h2>
-		<div class="row row-cols-1 row-cols-md-3 pt-4">
-			<div class="col mb-4" data-aos="fade-up">
-				<a href="suggested/electronics.html">
-					<div class="card">
-						<img src="assets/img/electronics.png" class="card-img-top" alt="Electronics">
-						<div class="card-body bg-dark">
-							<h4 class="card-title text-center text-white">Electronics</h4>
-						</div>
-					</div>
-				</a>
+	<!-- MAIN AREA -->
+	<section class="table">
+	    <div hidden id="spinner"></div>
+		<div class="container py-5">
+			<div class="row">
+				<div class="col-10 col-md-8 mx-auto page-message">
+				    <input hidden type="text" id="search" placeholder="Search for existing suggestions...">
+				</div>
 			</div>
-			<div class="col mb-4" data-aos="fade-up" data-aos-delay="200">
-				<a href="suggested/furniture.html">
-					<div class="card">
-						<img src="assets/img/furniture.png" class="card-img-top" alt="furniture">
-						<div class="card-body bg-dark">
-							<h4 class="card-title text-center text-white">Furniture</h4>
-						</div>
-					</div>
-				</a>
+			<div class="row pt-5">
+			    <table hidden id="suggestions-table" class="table table-hover table-bordered">
+			        <thead class="thead-dark">
+			            <tr>
+			                <th scope="col">Item Name</th>
+			                <th scope="col">Description</th>
+			                <th scope="col">Reason</th>
+			            </tr>
+			        </thead>
+			        <tbody id="table-body"></tbody>
+			    </table>
 			</div>
-			<div class="col mb-4" data-aos="fade-up" data-aos-delay="400">
-				<a href="suggested/grocery.html">
-					<div class="card">
-						<img src="assets/img/grocery.png" class="card-img-top" alt="grocery">
-						<div class="card-body bg-dark">
-							<h4 class="card-title text-center text-white">Grocery</h4>
-						</div>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="text-center py-5 mb-4">
-			<a href="suggested.html"><button class="btn btn-outline-primary">view all suggestions</button></a>
 		</div>
 	</section>
-	<!-- END MAIN BODY -->
+	<!-- END MAIN AREA -->
 
 	<!-- FOOTER SECTION -->
 	<footer class="container-fluid px-5 py-4">
@@ -216,18 +193,11 @@
 
 	<!-- SCRIPTS -->
 		<!-- Custom JS -->
-		<script type="text/javascript" src="assets/app.js"></script>
+		<script type="text/javascript" src="../assets/app.js"></script>
 		<!-- JS, Popper.js, and jQuery -->
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-		<script type="text/javascript" src="assets/bootstrap.min.js"></script>
-		<!-- Animate on Scroll JS -->
-	    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-	    <script>
-	    	AOS.init({
-			duration: 1000
-		    });
-	    </script>
+		<script type="text/javascript" src="../assets/bootstrap.min.js"></script>
 	<!-- END SCRIPTS -->
 </body>
 </html>
