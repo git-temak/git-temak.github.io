@@ -18,7 +18,7 @@
 </head>
 <body>
 	<!-- HEADER AREA -->
-	<header>
+	<header id="suggest">
 		<div class="container">
 		<!-- NAVIGATION AREA -->
 		<nav class="navbar navbar-expand-lg navbar-light px-0 py-4 pb-0">
@@ -29,8 +29,13 @@
 
 			<div class="collapse navbar-collapse" id="navMenu">
 				<ul class="navbar-nav mx-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="#">categories</a>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="suggested.html" id="navbarDropdown" role="button" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">Suggestions</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#">Electronics</a>
+							<a class="dropdown-item" href="#">Furniture</a>
+							<a class="dropdown-item" href="#">Grocery</a>
+				        </div>
 					</li>
 					<li class="nav-item active">
 						<a class="nav-link" href="#">suggest<span class="sr-only">(current)</span></a>
@@ -134,7 +139,7 @@
 		<section class="container hero py-5">
 			<div class="text-center">
 				<h3>Kindly make a suggestion to the store with the form below</h3>
-				<p class="font-italic font-s16"><span class="font-weight-bold">Please note:</span>You need to <a data-toggle="modal" data-target="#loginModal" href>Login</a> or <a data-toggle="modal" data-target="#signupModal" href>Sign up</a> to use this feature.</p>
+				<p class="font-italic font-s16"><span class="font-weight-bold">Please note: </span>You need to <a data-toggle="modal" data-target="#loginModal" href>Login</a> or <a data-toggle="modal" data-target="#signupModal" href>Sign up</a> to use this feature.</p>
 			</div>
 			<div class="row py-5">
 				<div class="col-11 col-md-7 col-lg-5 mx-auto suggest-body text-center">
@@ -172,10 +177,10 @@
 	<footer class="container-fluid px-5 py-4">
 		<div class="container">
 			<div class="row text-white align-items-center">
-				<div class="col-12 col-md-10 col-lg-11">
+				<div class="col-12 col-md-9 col-lg-10">
 					<p class="mb-md-0">The Shopping District &copy; 2020. All Rights Reserved.</p>
 				</div>
-				<div class="col-12 col-md-2 col-lg-1">
+				<div class="col-12 col-md-3 col-lg-2">
 					<div class="social-icons d-flex justify-content-around align-items-center">
 						<a href="#"><i class="fa fa-facebook text-white"></i></a>
 						<a href="#"><i class="fa fa-twitter text-white"></i></a>
