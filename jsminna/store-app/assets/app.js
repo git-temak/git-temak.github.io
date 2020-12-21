@@ -59,22 +59,22 @@ window.onload = () => {
 		fetch(storeSignup, requestOptions)
 		  .then(response => response.text())
 		  .then(result => {
-		  	signupForm.classList.add('d-none');
-		  	successMsg.classList.remove('d-none');
-  	  		signupForm.reset();
   	  		if (JSON.parse(result).success == false) {
-			  	$('.success-message h4').addClass('text-danger');
-			  	$('.success-message p').hide();
-			  	$('.success-message h4').text(JSON.parse(result).message);
+		  	  	alert(JSON.parse(result).message);
+		  		submit.innerText = 'Sign up';
 			} else {
+			  	signupForm.classList.add('d-none');
+			  	successMsg.classList.remove('d-none');
+	  	  		signupForm.reset();
 			  	$('.success-message h4').text('You have registered successfully!');
 			  	$('.success-message h4').addClass('text-success');
+			  	//set the api key from login to session
+			  	sessionStorage.setItem("User API Key", JSON.parse(result).payload.token);
+			  	//show the form again after closing the modal
 		  	  	$('#signupModal').on('hidden.bs.modal', () => {
 		  	  		signupForm.classList.remove('d-none');
 				  	successMsg.classList.add('d-none');
 					submit.innerText = 'Sign up';
-				  	apiKey = JSON.parse(result).payload.token;
-				  	console.log("signup", apiKey);
 		  		});
 			  }
 			console.log(result);
@@ -110,10 +110,8 @@ window.onload = () => {
 		  .then(result => {
 			console.log(result);
 			if (JSON.parse(result).success == false) {
-			  	// $('.login-text-success').addClass('text-danger');
-			  	// $('.login-success-message p').hide();
-			  	// $('.login-text-success').text(JSON.parse(result).message);
 			  	alert(JSON.parse(result).message);
+				loginSubmit.innerText = 'Login';
 			} else {
 				loginForm.classList.add('d-none');
 			  	loginSuccessMsg.classList.remove('d-none');
@@ -121,7 +119,7 @@ window.onload = () => {
 			  	$('.login-text-success').text('Login Successful!');
 			  	$('.login-text-success').addClass('text-success');
 			  	//set the api key from login to session
-			  	sessionStorage.setItem("API Key", JSON.parse(result).payload.token);
+			  	sessionStorage.setItem("User API Key", JSON.parse(result).payload.token);
 			  	if (window.location.href.indexOf("suggest") > -1){
 				  	$('.login-success-message p').hide();
 				  	setTimeout(() => {$('#loginModal').modal('hide')}, 1200);
@@ -140,8 +138,8 @@ window.onload = () => {
 		suggestForm.onsubmit = (e) => {
 			e.preventDefault();
 			suggestSubmit.innerHTML = `<i class="fa fa-spinner fa-spin mr-2"></i>Please Wait...`;
-		  	//set the api key from session storage to be used for suggestion
-			const apiKey = sessionStorage.getItem("API Key");
+		  	//get the api key from session storage to be used for suggestion form validation
+			const apiKey = sessionStorage.getItem("User API Key");
 
 			const suggestHeaders = new Headers();
 			suggestHeaders.append("Authorization", "Bearer " + apiKey);
@@ -178,6 +176,7 @@ window.onload = () => {
 				}
 			  })
 			  .catch(error => {
+			  	$('.suggest-body').html(`<p class="text-danger">${error}</p>`);
 			  	console.log('error', error)
 			  });
 		}
