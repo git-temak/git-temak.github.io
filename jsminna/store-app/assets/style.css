@@ -226,12 +226,14 @@
 		border-color: transparent;
 	}
 
-	.dropdown:hover .dropdown-menu{
-        display: block;
+    .dropdown-toggle-split {
+    	border-radius: 50% !important;
+	    height: 20px;
+	    margin: auto;
     }
 
-    .dropdown-menu{
-        margin-top: 0;
+    .dropdown-toggle::after {
+	    vertical-align: .5em;
     }
 
 /** Responsive edits **/
