@@ -66,6 +66,10 @@
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: bottom;
+	}
+
+	#suggest
+	{
 		min-height: 91.2vh;
 	}
 
@@ -148,6 +152,52 @@
 	}
 /** END CATEGORIES SECTION **/
 
+/** SUGGESTIONS PAGE **/
+	#search {
+		background-image: url("img/search.svg");
+		background-size: 20px;
+		background-position: 10px 12px;
+		background-repeat: no-repeat;
+		width: 100%;
+		font-size: 16px;
+		padding: 12px 20px 12px 40px;
+		border: 1px solid #ddd;
+		margin-bottom: 20px;
+		border-radius: 10px;
+	}
+
+	#spinner:not([hidden]) {
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  right: 0;
+	  bottom: 0;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	}
+
+	#spinner::after {
+	  content: "";
+	  width: 80px;
+	  height: 80px;
+	  border: 2px solid #f3f3f3;
+	  border-top: 3px solid var(--primaryColor);
+	  border-radius: 100%;
+	  will-change: transform;
+	  animation: spin 1s infinite linear
+	}
+
+	@keyframes spin {
+	  from {
+	    transform: rotate(0deg);
+	  }
+	  to {
+	    transform: rotate(360deg);
+	  }
+	}
+/** END SUGGESTIONS PAGE **/
+
 /** FOOTER STYLING **/
 	footer
 	{
@@ -162,7 +212,29 @@
 		}
 	}
 
-/** Responsive edits **/
+	.navbar-light .navbar-nav .active>.nav-link {
+		color: var(--primaryColor);
+	}
+
+	.navbar-light .navbar-toggler {
+		border-color: transparent;
+	}
+
+	.dropdown:hover .dropdown-menu{
+        display: block;
+    }
+
+    .dropdown-menu{
+        margin-top: 0;
+    }
+
+   /* @media (min-width: 992px) {
+    	.dropdown-menu{
+    		display: block;
+    	}
+    }*/
+
+/** Responsive edits *
 	@media (max-width: 500px) {
 		header h1
 		{

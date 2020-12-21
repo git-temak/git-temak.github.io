@@ -1,4 +1,4 @@
-// get entries from DOM
+// get elements from DOM
 const signupModal = document.getElementById('signupModal');
 const loginModal = document.getElementById('loginModal');
 const modalBody = document.querySelector('.modal-body');
@@ -24,10 +24,16 @@ const itemDescription = document.getElementById('itemdescription');
 const category = document.getElementById('category');
 const reason = document.getElementById('reason');
 
+const table = document.getElementById("suggestions-table");
+const tableBody = document.getElementById("table-body");
+const search = document.getElementById("search");
+const spinner = document.getElementById("spinner");
+
 // store url paths
 const storeSignup = "https://jsminnastore.herokuapp.com/auth/signup";
 const storeLogin = "https://jsminnastore.herokuapp.com/auth/login/";
 const storeSuggest = "https://jsminnastore.herokuapp.com/suggest";
+const storeSuggested = "https://jsminnastore.herokuapp.com/suggested";
 
 const myHeaders = new Headers();
 myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsTmFtZSI6ImhhcnJ5cG9ydGVyIDUiLCJpYXQiOjE2MDY0Nzk0MDUsImV4cCI6MTYwNjQ4MzAwNX0.V8j3bCZEMFiTa4yhpHdYP8uIesEU5ty6YzxNau2TKtE");
@@ -57,33 +63,33 @@ window.onload = () => {
 		};
 
 		fetch(storeSignup, requestOptions)
-		  .then(response => response.text())
-		  .then(result => {
-		  	signupForm.classList.add('d-none');
-		  	successMsg.classList.remove('d-none');
-  	  		signupForm.reset();
-  	  		if (JSON.parse(result).success == false) {
+		    .then(response => response.text())
+		    .then(result => {
+	  	  		if (JSON.parse(result).success == false) {
+			  	  	alert(JSON.parse(result).message);
+			  		submit.innerText = 'Sign up';
+				} else {
+				  	signupForm.classList.add('d-none');
+				  	successMsg.classList.remove('d-none');
+		  	  		signupForm.reset();
+				  	$('.success-message h4').text('You have registered successfully!');
+				  	$('.success-message h4').addClass('text-success');
+				  	//set the api key from login to session
+				  	sessionStorage.setItem("User API Key", JSON.parse(result).payload.token);
+				  	//show the form again after closing the modal
+			  	  	$('#signupModal').on('hidden.bs.modal', () => {
+			  	  		signupForm.classList.remove('d-none');
+					  	successMsg.classList.add('d-none');
+						submit.innerText = 'Sign up';
+			  		});
+				  }
+		    })
+		    .catch(error => {
+			  	$('.success-message h4').removeClass('text-success');
 			  	$('.success-message h4').addClass('text-danger');
-			  	$('.success-message p').hide();
-			  	$('.success-message h4').text(JSON.parse(result).message);
-			} else {
-			  	$('.success-message h4').text('You have registered successfully!');
-			  	$('.success-message h4').addClass('text-success');
-		  	  	$('#signupModal').on('hidden.bs.modal', () => {
-		  	  		signupForm.classList.remove('d-none');
-				  	successMsg.classList.add('d-none');
-					submit.innerText = 'Sign up';
-		  		});
-			  }
-			console.log(result);
-		  })
-		  .catch(error => {
-		  	$('.success-message h4').removeClass('text-success');
-		  	$('.success-message h4').addClass('text-danger');
-		  	$('.success-message h4').innerText = error;
-		  	alert(error);
-		  	console.log('error', error);
-		  });
+			  	$('.success-message h4').innerText = error;
+			  	alert(error);
+		    });
 	}
 
 	// login form
@@ -104,60 +110,145 @@ window.onload = () => {
 		};
 
 		fetch(storeLogin, requestOptions)
-		  .then(response => response.text())
-		  .then(result => {
-		  	loginForm.classList.add('d-none');
-		  	loginSuccessMsg.classList.remove('d-none');
-  	  		loginForm.reset();
-			console.log(result);
-			if (JSON.parse(result).success == false) {
-			  	$('.login-text-success').addClass('text-danger');
-			  	$('.login-success-message p').hide();
-			  	$('.login-text-success').text(JSON.parse(result).message);
-			} else {
-			  	$('.login-text-success').text('Login Successful!');
-			  	$('.login-text-success').addClass('text-success');
-			}
-		  })
-		  .catch(error => {
-		  	$('.login-text-success').addClass('text-danger');
-		  	$('.login-text-success').text(error);
-		  	console.log('error', error)
-		  });
+		    .then(response => response.text())
+		    .then(result => {
+				if (JSON.parse(result).success == false) {
+				  	alert(JSON.parse(result).message);
+					loginSubmit.innerText = 'Login';
+				} else {
+					loginForm.classList.add('d-none');
+				  	loginSuccessMsg.classList.remove('d-none');
+		  	  		loginForm.reset();
+				  	$('.login-text-success').text('Login Successful!');
+				  	$('.login-text-success').addClass('text-success');
+				  	//set the api key from login to session
+				  	sessionStorage.setItem("User API Key", JSON.parse(result).payload.token);
+				  	if (window.location.href.indexOf("suggest") > -1){
+					  	$('.login-success-message p').hide();
+					  	setTimeout(() => {$('#loginModal').modal('hide')}, 1200);
+				  	}
+				}
+			})
+		    .catch(error => {
+		  		$('.login-text-success').addClass('text-danger');
+		  		$('.login-text-success').text(error);
+		    });
 	}
 	
-	// if (window.location.pathname === '/suggest.html' ){
+	if (window.location.href.search(/\bsuggest\b/i) > -1){
 		// suggest form
-		// suggestForm.onsubmit = () => {
-		// 	suggestSubmit.innerHTML = `<i class="fa fa-spinner fa-spin mr-2"></i>Please Wait...`;
+		suggestForm.onsubmit = (e) => {
+			e.preventDefault();
+			suggestSubmit.innerHTML = `<i class="fa fa-spinner fa-spin mr-2"></i>Please Wait...`;
+		  	//get the api key from session storage to be used for suggestion form validation
+			const apiKey = sessionStorage.getItem("User API Key");
 
-		// 	let raw = JSON.stringify({
-		// 		"itemName":itemName.value,
-		// 		"itemDescription":itemDescription.value,
-		// 		"itemCategory":category.value,
-		// 		"reason":reason.value
-		// 	});
+			const suggestHeaders = new Headers();
+			suggestHeaders.append("Authorization", "Bearer " + apiKey);
+			suggestHeaders.append("Content-Type", "application/json");
 
-		// 	console.log(raw)
+			let raw = JSON.stringify({
+				"itemName":itemName.value,
+				"itemDescription":itemDescription.value,
+				"itemCategory":category.value,
+				"reason":reason.value
+			});
 
-		// 	const requestOptions = {
-		// 		method: 'POST',
-		// 		headers: myHeaders,
-		// 		body: raw,
-		// 		redirect: 'follow'
-		// 	};
+			const requestOptions = {
+				method: 'POST',
+				headers: suggestHeaders,
+				body: raw,
+				redirect: 'follow'
+			};
 
-		// 	fetch(storeSuggest, requestOptions)
-		// 	  .then(response => response.text())
-		// 	  .then(result => {
-		// 	  	alert("Thank you!Your suggestion has been recorded successfully.")
-	 //  	  		loginForm.reset();
-		// 		console.log(result);
-		// 	  })
-		// 	  .catch(error => {
-		// 	  	alert(error);
-		// 	  	console.log('error', error)
-		// 	  });
+			fetch(storeSuggest, requestOptions)
+			    .then(response => response.text())
+			    .then(result => {
+					if (!$.isEmptyObject(JSON.parse(result).error)) {
+					  	$('.suggest-body').html(`<p class="text-danger">${JSON.parse(result).error.name}: ${JSON.parse(result).error.message}</p>`);
+					} else if (JSON.parse(result).success == false) {
+					  	alert(JSON.parse(result).message);
+						suggestSubmit.innerText = 'Submit suggestion';
+					} else {
+			  	  		suggestForm.reset();
+					  	$('.suggest-body').html('<p class="text-success">Thank you! Your suggestion has been recorded successfully.</p>');
+					  	setTimeout(() => {$('.suggest-body').html(suggestForm)}, 1500);
+						suggestSubmit.innerText = 'Submit suggestion';
+					}
+				})
+			    .catch(error => {
+			  		$('.suggest-body').html(`<p class="text-danger">${error}</p>`);
+			    });
+		}
+	}
+
+	if (window.location.href.search(/\bsuggested\b/i) > -1){
+		//get the api key from session storage to be used for suggestion form validation
+		const apiKey = sessionStorage.getItem("User API Key");
+
+		//check if api key is set
+		if (!apiKey) {
+			$('.page-message').html('<p class="mt-5 text-center text-danger">You do not have authorization to view the content of this page.</p><p class="font-italic text-center font-s16"><span class="font-weight-bold">Please note: </span>You need to <a data-toggle="modal" data-target="#loginModal" href>Login</a> or <a data-toggle="modal" data-target="#signupModal" href>Sign up</a> to use this feature. Then refresh this page to try again.</p>');
+		} else {
+			const suggestHeaders = new Headers();
+			suggestHeaders.append("Authorization", "Bearer " + apiKey);
+			suggestHeaders.append("Content-Type", "application/json");
+
+			const requestOptions = {
+				method: 'GET',
+				headers: suggestHeaders,
+				redirect: 'follow'
+			};
+
+			fetch(storeSuggested, requestOptions)
+				.then(response => response.text())
+				.then(result => {
+					if (!$.isEmptyObject(JSON.parse(result).error)) {
+					  	$('.page-message').html(`<p class="text-danger text-center">${JSON.parse(result).error.name}: ${JSON.parse(result).error.message}</p>
+					  		<p class="font-italic text-center font-s16">Kindly <a data-toggle="modal" data-target="#loginModal" href>Login</a> or <a data-toggle="modal" data-target="#signupModal" href>Sign up</a> again to use this feature.</p>`);
+					} else {
+						spinner.removeAttribute('hidden');
+						search.removeAttribute('hidden');
+
+						JSON.parse(result).payload.result.forEach(entry => {
+						const row = tableBody.insertRow(0);
+						const cell1 = row.insertCell(0);
+						const cell2 = row.insertCell(1);
+						const cell3 = row.insertCell(2);
+						const cell4 = row.insertCell(3);
+
+						cell1.innerHTML = entry.itemName
+						cell2.innerHTML = entry.itemDescription;
+						cell3.innerHTML = entry.itemCategory;
+						cell4.innerHTML = entry.reason;
+
+						setTimeout(() => {
+							spinner.setAttribute('hidden', '')
+							table.removeAttribute('hidden', '')
+						}, 1000);
+						});
+					}
+				})
+				.catch(error => console.log('error', error))
+		}
+
+		// const searchCountry = () => {
+		// 	filter = search.value.toUpperCase();
+		// 	tr = tableBody.getElementsByTagName("tr");
+
+		// 	for (i = 0; i < tr.length; i++) {
+		// 	    td = tr[i].getElementsByTagName("td")[1];
+		// 	    if (td) {
+		// 			txtValue = td.textContent || td.innerText;
+		// 			if (txtValue.toUpperCase().indexOf(filter) > -1) {
+		// 				tr[i].style.display = "";
+		// 			} else {
+		// 				tr[i].style.display = "none";
+		// 			}
+		// 	    }
+		// 	}
 		// }
-	// }
+
+		// search.onkeyup = searchCountry;
+	}
 }
