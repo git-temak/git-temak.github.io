@@ -140,49 +140,57 @@ window.onload = () => {
 	
 	// fire on the suggest page
 	if (window.location.href.search(/\bsuggest\b/i) > -1){
-		// suggest form
-		suggestForm.onsubmit = (e) => {
-			e.preventDefault();
-			suggestSubmit.innerHTML = `<i class="fa fa-spinner fa-spin mr-2"></i>Please Wait...`;
-		  	//get the api key from session storage to be used for suggestion form validation
-			const apiKey = sessionStorage.getItem("User API Key");
+	  	//get the api key from session storage to be used for suggestion form validation
+		const apiKey = sessionStorage.getItem("User API Key");
 
-			const suggestHeaders = new Headers();
-			suggestHeaders.append("Authorization", "Bearer " + apiKey);
-			suggestHeaders.append("Content-Type", "application/json");
+		//check if api key is set
+		if (!apiKey) {
+			$('.suggest-header').html('<p class="mt-5 text-center text-danger">You do not have authorization to view the content of this page.</p><p class="font-italic text-center font-s16"><span class="font-weight-bold">Please note: </span>You need to <a data-toggle="modal" data-target="#loginModal" href>Login</a> or <a data-toggle="modal" data-target="#signupModal" href>Sign up</a> to use this feature. Then refresh this page to try again.</p>');
+		} else {
+	    	suggestForm.removeAttribute('hidden');
 
-			let raw = JSON.stringify({
-				"itemName":itemName.value,
-				"itemDescription":itemDescription.value,
-				"itemCategory":category.value,
-				"reason":reason.value
-			});
+	    	// suggest form
+	    	suggestForm.onsubmit = (e) => {
+	    		e.preventDefault();
+	    		suggestSubmit.innerHTML = `<i class="fa fa-spinner fa-spin mr-2"></i>Please Wait...`;
 
-			const requestOptions = {
-				method: 'POST',
-				headers: suggestHeaders,
-				body: raw,
-				redirect: 'follow'
-			};
+				const suggestHeaders = new Headers();
+				suggestHeaders.append("Authorization", "Bearer " + apiKey);
+				suggestHeaders.append("Content-Type", "application/json");
 
-			fetch(storeSuggest, requestOptions)
-			    .then(response => response.text())
-			    .then(result => {
-					if (!$.isEmptyObject(JSON.parse(result).error)) {
-					  	$('.suggest-body').html(`<p class="text-danger">${JSON.parse(result).error.name}: ${JSON.parse(result).error.message}</p>`);
-					} else if (JSON.parse(result).success == false) {
-					  	alert(JSON.parse(result).message);
-						suggestSubmit.innerText = 'Submit suggestion';
-					} else {
-			  	  		suggestForm.reset();
-					  	$('.suggest-body').html('<p class="text-success">Thank you! Your suggestion has been recorded successfully.</p>');
-					  	setTimeout(() => {$('.suggest-body').html(suggestForm)}, 1500);
-						suggestSubmit.innerText = 'Submit suggestion';
-					}
-				})
-			    .catch(error => {
-			  		$('.suggest-body').html(`<p class="text-danger">${error}</p>`);
-			    });
+				let raw = JSON.stringify({
+					"itemName":itemName.value,
+					"itemDescription":itemDescription.value,
+					"itemCategory":category.value,
+					"reason":reason.value
+				});
+
+				const requestOptions = {
+					method: 'POST',
+					headers: suggestHeaders,
+					body: raw,
+					redirect: 'follow'
+				};
+
+				fetch(storeSuggest, requestOptions)
+				    .then(response => response.text())
+				    .then(result => {
+						if (!$.isEmptyObject(JSON.parse(result).error)) {
+						  	$('.suggest-body').html(`<p class="text-danger">${JSON.parse(result).error.name}: ${JSON.parse(result).error.message}</p>`);
+						} else if (JSON.parse(result).success == false) {
+						  	alert(JSON.parse(result).message);
+							suggestSubmit.innerText = 'Submit suggestion';
+						} else {
+				  	  		suggestForm.reset();
+						  	$('.suggest-body').html('<p class="text-success">Thank you! Your suggestion has been recorded successfully.</p>');
+						  	setTimeout(() => {$('.suggest-body').html(suggestForm)}, 1500);
+							suggestSubmit.innerText = 'Submit suggestion';
+						}
+					})
+				    .catch(error => {
+				  		$('.suggest-body').html(`<p class="text-danger">${error}</p>`);
+				    });
+			}
 		}
 	}
 
