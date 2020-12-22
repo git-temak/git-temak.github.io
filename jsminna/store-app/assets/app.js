@@ -78,7 +78,7 @@ window.onload = () => {
 				  	$('.success-message h4').text('You have registered successfully!');
 				  	$('.success-message h4').addClass('text-success');
 				  	//set the api key from login to session
-				  	sessionStorage.setItem("User API Key", JSON.parse(result).payload.token);
+				  	localStorage.setItem("User API Key", JSON.parse(result).payload.token);
 				  	//show the form again after closing the modal
 			  	  	$('#signupModal').on('hidden.bs.modal', () => {
 			  	  		signupForm.classList.remove('d-none');
@@ -125,7 +125,7 @@ window.onload = () => {
 				  	$('.login-text-success').text('Login Successful!');
 				  	$('.login-text-success').addClass('text-success');
 				  	//set the api key from login to session
-				  	sessionStorage.setItem("User API Key", JSON.parse(result).payload.token);
+				  	localStorage.setItem("User API Key", JSON.parse(result).payload.token);
 				  	if (window.location.href.indexOf("suggest") > -1){
 					  	$('.login-success-message p').hide();
 					  	setTimeout(() => {$('#loginModal').modal('hide')}, 1200);
@@ -141,7 +141,7 @@ window.onload = () => {
 	// fire on the suggest page
 	if (window.location.href.search(/\bsuggest\b/i) > -1){
 	  	//get the api key from session storage to be used for suggestion form validation
-		const apiKey = sessionStorage.getItem("User API Key");
+		const apiKey = localStorage.getItem("User API Key");
 
 		//check if api key is set
 		if (!apiKey) {
@@ -197,7 +197,7 @@ window.onload = () => {
 	// fire on the suggestions list page
 	if (window.location.href.search(/\bsuggested.html\b/i) > -1){
 		//get the api key from session storage to be used for suggestion form validation
-		const apiKey = sessionStorage.getItem("User API Key");
+		const apiKey = localStorage.getItem("User API Key");
 
 		//check if api key is set
 		if (!apiKey) {
@@ -276,7 +276,7 @@ window.onload = () => {
 	// fire on the electronics list page
 	if (window.location.href.search(/\belectronics\b/i) > -1){
 		//get the api key from session storage to be used for suggestion form validation
-		const apiKey = sessionStorage.getItem("User API Key");
+		const apiKey = localStorage.getItem("User API Key");
 
 		//check if api key is set
 		if (!apiKey) {
@@ -347,7 +347,7 @@ window.onload = () => {
 	// fire on the furniture list page
 	if (window.location.href.search(/\bfurniture\b/i) > -1){
 		//get the api key from session storage to be used for suggestion form validation
-		const apiKey = sessionStorage.getItem("User API Key");
+		const apiKey = localStorage.getItem("User API Key");
 
 		//check if api key is set
 		if (!apiKey) {
@@ -418,7 +418,7 @@ window.onload = () => {
 	// fire on the grocery list page
 	if (window.location.href.search(/\bgrocery\b/i) > -1){
 		//get the api key from session storage to be used for suggestion form validation
-		const apiKey = sessionStorage.getItem("User API Key");
+		const apiKey = localStorage.getItem("User API Key");
 
 		//check if api key is set
 		if (!apiKey) {
