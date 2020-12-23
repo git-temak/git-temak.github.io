@@ -128,7 +128,11 @@ window.onload = () => {
 				  	localStorage.setItem("User API Key", JSON.parse(result).payload.token);
 				  	if (window.location.href.indexOf("suggest") > -1){
 					  	$('.login-success-message p').hide();
-					  	setTimeout(() => {$('#loginModal').modal('hide')}, 1200);
+					  	setTimeout(() => {
+					  		// hide the form and reload page
+					  		$('#loginModal').modal('hide');
+					  		location.reload();
+					  	}, 1200);
 				  	}
 				}
 			})
