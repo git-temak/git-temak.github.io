@@ -56,6 +56,12 @@
 	{
 		border-radius: 15px;
 	}
+
+	input.required
+	{
+		border-color: #ff8080;
+	    box-shadow: 0 0 0 0.2rem rgb(255 0 0 / 0.2);
+	}
 /** END ELEMENT WIDE STYLING **/
 
 /** HEADER SECTION **/
@@ -241,7 +247,7 @@
 		}
 	}
 
-	.navbar-light .navbar-nav .active>.nav-link {
+	.navbar-light .navbar-nav .active>.nav-link, .navbar-nav > .active a.nav-link, .navbar-light .navbar-nav .active .show>.nav-link {
 		color: var(--primaryColor);
 	}
 
