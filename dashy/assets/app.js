@@ -3,10 +3,10 @@ const rightContent = document.getElementById('right-content');
 const cardContainer = document.querySelector('#right-content .container');
 
 // User API URL
-const userApiUrl = "https://randomuser.me/api/?dataType=json&inc=gender,name,nat,location,email,registered,dob,phone,cell,picture&results=2";
+let noOfUsers = 2;
+const userApiUrl = "https://randomuser.me/api/?dataType=json&inc=gender,name,nat,location,email,registered,dob,phone,cell,picture&results=";
 
 const myHeaders = new Headers();
-myHeaders.append("Cookie", "__cfduid=d2bfd4f935a3d5f16dbbb9d8803d8251d1610580376");
 
 // run when page has loaded
 window.onload = () => {
@@ -16,7 +16,18 @@ window.onload = () => {
 		redirect: 'follow'
 	};
 
-	fetch(userApiUrl, requestOptions)
+	// set how many users should be displayed based on the screen size
+	if (window.innerWidth > '1024') {
+		noOfUsers = 3;
+	} if (window.innerWidth >= '1200') {
+		noOfUsers = 2;
+	} if (window.innerWidth > '1440') {
+		noOfUsers = 4;
+	} if (window.innerWidth > '2560') {
+		noOfUsers = 5;
+	}
+
+	fetch(userApiUrl + noOfUsers, requestOptions)
 	    .then(response => response.json())
 	    .then(result => {
 	    	const usersArray = result.results;
