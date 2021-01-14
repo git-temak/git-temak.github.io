@@ -1,5 +1,4 @@
 // get elements from DOM
-const rightContent = document.getElementById('right-content');
 const cardContainer = document.querySelector('#right-content .container');
 
 // User API URL
@@ -54,7 +53,7 @@ window.onload = () => {
 	  	  		userAddInfo.classList.add('additional-info', 'd-flex', 'justify-content-between', 'align-items-center', 'flex-wrap');
 	  	  		userEmail.classList.add('email', 'd-inline');
 	  	  		userPhone.classList.add('phone', 'd-inline');
-	  	  		userAddInfoArrow.classList.add('user-details-arrow');
+	  	  		userAddInfoArrow.classList.add('user-details-arrow', 'hover-st');
 
 	  	  		//set content of the newly created elements
 	  	  		userImg.src = user.picture.large;
@@ -76,6 +75,32 @@ window.onload = () => {
 	  	  		userAddInfo.appendChild(userPhone);
 	  	  		userAddInfo.appendChild(userAddInfoArrow);
   	  		})
+
+  	  			// create row for footer buttons and add to DOM
+  	  			const btnsRow = document.createElement('div');
+	  	  		const dlnBtnDiv = document.createElement('div');
+	  	  		const downloadBtn = document.createElement('button');
+	  	  		const arrows = document.createElement('div');
+	  	  		const leftArrow = document.createElement('div');
+	  	  		const rightArrow = document.createElement('div');
+
+	  	  		btnsRow.classList.add('row');
+	  	  		dlnBtnDiv.classList.add('col-8', 'col-md-9');
+	  	  		arrows.classList.add('col-4', 'col-md-3', 'd-flex', 'justify-content-between', 'align-items-center', 'arrows');
+	  	  		downloadBtn.classList.add('download-btn', 'p-3');
+	  	  		leftArrow.classList.add('d-flex', 'justify-content-center', 'align-items-center', 'mr-2', 'mr-md-0', 'm-md-auto');
+	  	  		rightArrow.classList.add('d-flex', 'justify-content-center', 'align-items-center');
+
+	  	  		downloadBtn.innerHTML = `<i class="fa fa-cloud-download mr-3" aria-hidden="true"></i>Download results`;
+	  	  		leftArrow.innerHTML = `<i class="fa fa-chevron-left" aria-hidden="true"></i>`;
+	  	  		rightArrow.innerHTML = `<i class="fa fa-chevron-right" aria-hidden="true"></i>`;
+
+	  	  		cardContainer.appendChild(btnsRow);
+	  	  		btnsRow.appendChild(dlnBtnDiv);
+	  	  		btnsRow.appendChild(arrows);
+	  	  		dlnBtnDiv.appendChild(downloadBtn);
+	  	  		arrows.appendChild(leftArrow);
+	  	  		arrows.appendChild(rightArrow);
 	    })
 	    .catch(error => {
 		  	alert(error);
