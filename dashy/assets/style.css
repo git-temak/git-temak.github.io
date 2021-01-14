@@ -5,14 +5,9 @@
 		font-family: 'Poppins', sans-serif;
 		font-style: normal;
 		font-weight: normal;
-		font-size: 1rem;
+		font-size: 14px;
 	    box-sizing: border-box;
 	    scroll-behavior: smooth;
-	}
-
-	body
-	{
-		background-color: #262A41;
 	}
 
 	:root
@@ -22,8 +17,21 @@
 		--lightGreen: #75D6D1;
 		--greenShadow: rgba(48, 187, 181, 0.45);
 		--mainPurple: #7946C1;
+		--darkGray: #262A41;
+	}
+	
+	body
+	{
+		background-color: var(--darkGray);
 	}
 /** END UNIVERSAL STYLING **/
+
+/** UTILITIES **/
+	.lt-sp02
+		{	
+			letter-spacing: -0.02px;
+		}
+/** END UTILITIES **/
 
 /** LEFT CONTENT **/
 	#left-content
@@ -49,7 +57,7 @@
 
 	#user-name
 		{
-			font-size: 37px;
+			font-size: 2.3125rem;
 			letter-spacing: -0.04px;
 			line-height: 1.22;
 		}
@@ -84,7 +92,6 @@
 	.show-users
 		{
 			font-size: 22px;
-			letter-spacing: -0.02px;
 			color: rgba(255, 255, 255, 0.7);
 			font-weight: 600;
 		}
@@ -108,7 +115,6 @@
 		{
 			text-transform: capitalize;
 			color: rgba(255, 255, 255, 0.7);
-			letter-spacing: -0.02px;
 			font-weight: 500;
 		}
 
@@ -143,31 +149,185 @@
 			border: 1px solid #707070;
 			height: 95vh;
 		}
+
+	#right-content h3
+		{
+			font-size: 2.3125rem;
+			line-height: 1.22;
+			letter-spacing: -0.04px;
+			color: var(--darkGray);
+		}
+
+	#filter, #country
+		{
+			border-radius: 35px;
+			background-color: rgba(60, 63, 84, 0.11);
+			border: 1px solid rgba(60, 63, 84, 0.11);
+			width: 100%;
+			border: none;
+			box-shadow: 0px 3px 7px 1px rgba(43, 43, 43, 0.05);
+		}
+
+	.custom-switch.custom-switch-md .custom-control-label
+		{
+		    padding-left: 1rem;
+		    padding-top: 0.25rem;
+		}
+
+	.custom-switch.custom-switch-md .custom-control-label::before
+		{
+		    height: 1.5rem;
+		    width: calc(2rem + 0.75rem);
+		    border-radius: 3rem;
+		}
+
+	.custom-switch.custom-switch-md .custom-control-label::after
+		{
+		    width: calc(1.5rem - 4px);
+		    height: calc(1.5rem - 4px);
+		    border-radius: calc(2rem - (1.5rem / 2));
+		}
+
+	.custom-switch .custom-control-input:checked~.custom-control-label::after
+		{
+		    transform: translateX(1.2rem);
+		}
+
+	#filter
+		{
+			background-image: url("../assets/img/search.svg");
+			background-size: 22px;
+			background-position: 20px;
+			background-repeat: no-repeat;
+			padding: 10px 20px 10px 60px;
+			opacity: 0.5;
+		}
+
+	#filter:focus, #country:focus
+		{
+			outline: none;
+			box-shadow: 0px 0px 5px 3px rgba(49, 186, 181, 0.5);
+		}
+
+	#country
+		{
+			padding: 10px 20px 10px;
+			color: rgba(38, 42, 65, 0.73);
+		}
+
+	#countrySwitch + label
+		{
+			font-size: 1.0625rem;
+			letter-spacing: -0.42px;
+			color: rgba(0, 0, 0, 0.62);
+		}
+
+	.custom-control-input:focus ~ .custom-control-label::before 
+		{ 
+            border-color: var(--mainGreen); 
+			box-shadow: 0px 0px 5px 1px var(--greenShadow);
+        }
+
+    .custom-control-input:checked ~ .custom-control-label::before
+    	{
+            border-color: var(--mainGreen); 
+            background-color: var(--mainGreen); 
+        }
+
+    .custom-control-input:active ~ .custom-control-label::before
+	    {
+            background-color: var(--mainGreen) !important; 
+            border-color: var(--mainGreen) !important;
+        }
+
+    .custom-control-input:focus:not(:checked) ~ .custom-control-label::before
+	    {
+            border-color: var(--mainGreen); 
+        }
+
+	#filter::placeholder
+		{
+			color: rgba(38, 42, 65, 0.52);
+			font-size: 1.125rem;
+		}
+
+	.filter-text
+		{
+			font-size: 1.125rem;
+			color: rgba(38, 42, 65, 0.9);
+		}
+
+	.user-card
+		{
+			background-color: white;
+			box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.05);
+			border-radius: 18px;
+		}
+
+	.user-image
+		{
+			border: 8px solid var(--lightGreen);
+			width: 113px;
+			height: 113px;
+		}
+
+	.user-name
+		{
+			font-size: 1.375rem;
+			font-weight: bold;
+			color: var(--darkGray);
+		}
+
+	.user-address
+		{
+			font-style: italic;
+			color: rgba(38, 42, 65, 0.69);
+			font-size: 1.125rem;
+		}
+
+	.email, .phone
+		{
+			color: rgba(38, 42, 65, 0.52);
+		}
+
+	.user-details-arrow
+		{	
+			background-color: var(--mainGreen);
+			box-shadow: 2px 15px 30px var(--greenShadow);
+			border-radius: 13px;
+			padding: 15px 20px;
+		}
+
+	.user-details-arrow i
+		{
+			color: white;
+			font-size: 1.125rem;
+		}
 /** END RIGHT CONTENT **/
 
 /** RESPONSIVENESS **/
-@media only screen and (min-width: 768px){
-	#left-content
-		{
-			padding: 100px 80px;
-		}
-}
+	@media only screen and (min-width: 768px){
+		#left-content
+			{
+				padding: 100px 80px;
+			}
+	}
 
-@media only screen and (max-width: 768px){
-	.all-users, .male-icon, .female-icon
-	{
-    	width: 90px;
-    	height: 80px;
-    }
-
-    .user-selectors svg
+	@media only screen and (max-width: 768px){
+		.all-users, .male-icon, .female-icon
 		{
-			height: 40px;
-		}
+	    	width: 90px;
+	    	height: 80px;
+	    }
 
-	.all-users svg
-		{
-			height: 30px;
-		}
-}
+	    .user-selectors svg
+			{
+				height: 40px;
+			}
+
+		.all-users svg
+			{
+				height: 30px;
+			}
+	}
 /** END RESPONSIVENESS **/
