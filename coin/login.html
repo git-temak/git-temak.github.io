@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Simple Coin Conversion</title>
+	<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<section class="container">
+		<form class="form" name="form" id="coin-form" method="POST">
+			<div class="row">
+				<label for="coin-options">Coin</label>
+				<select name="coin-options" id="coin-options">
+					<option value="">-- Select Currency --</option>
+					<option value="USD">USD</option>
+					<option value="NGN">NGN</option>
+				</select>
+			</div>
+			<div class="row">
+				<label for="coin-amount">Amount</label>
+				<input type="number" id="coin-amount" name="coin-amount" placeholder="Coin amount">
+			</div>
+			<div class="row">
+				<label for="coin-btc">Bitcoin</label>
+				<input type="text" id="coin-btc" name="coin-btc" placeholder="0" value="" disabled>
+			</div>
+			<div class="row">
+				<label for="coin-eth">Ethereum</label>
+				<input type="text" id="coin-eth" name="coin-eth" placeholder="0" value="" disabled>
+			</div>
+		</form>
+	</section>
+
+	<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
